@@ -22,3 +22,41 @@
     font-weight: 500; 
     text-align: left;
 }
+.listViewOuterView{
+    position: absolute;
+    top:150px;
+    right: 0%;
+    height: 75%;
+    width: 1268px;
+    scroll-behavior: smooth;
+    
+}
+.list{
+    display: block;
+}
+.olClass{
+    float: left;
+    width: 50px;
+    background-color: green;
+    position: relative;
+    left: 10px;
+}
+.liClass{
+    float: left;
+    width: 1000px;
+    height: 82px;
+    background-color: grey;
+}
+.listDiv1{
+    float: left;
+    width: 200px;
+    height: 80px;
+    background-color: #fff;
+    
+}
+.listLabel{
+    font-family: "Open Sans", sans-serif;
+    color: #000;
+    font-size: 15px;
+    font-weight: 600; 
+}

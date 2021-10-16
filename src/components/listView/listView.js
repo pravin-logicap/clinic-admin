@@ -71,13 +71,16 @@ class ListView extends React.Component{
                         <label className="menuLabel"> Prescription</label><br/><br/>
                     </div>
                  </div>
-                 <div className="doctorView">
+                 <div className="pageTitle">
                     <PageTitle pageName={this.state.selectedPageName} />
+                </div>
+                <div className="listViewOuterView">
+                    <ListingData pageName={this.state.selectedPageName}/>
                 </div>
                 </div>  
             )}
             {this.state.isDoctorClicked && (
-                    <Doctors />
+                <Doctors />
             )}
         </div>
         )
@@ -90,5 +93,127 @@ function PageTitle(props){
        <label className="pageHeaderLabel"> {props.pageName}</label>
     </div>
     );
+}
+
+function ListingData(props){
+    //TODO: make API call to fetch list of given type
+    let pageType = props.pageType;
+
+    let appointments = [
+        {
+        "name" : "Lorem ipsum",
+        "address" : "London",
+        "appointment_doctor" : "Dr Amit Bhapkar",
+        "age" : "35",
+        "phone" : "1122333",
+        "email" : "test@abc.com",
+        "date_and_timing" : "Tue, 18-Oct-2021 12:30 PM"
+
+    },
+    {
+        "name" : "Sam ipsum",
+        "address" : "London",
+        "appointment_doctor" : "Dr Amit Bhapkar",
+        "age" : "35",
+        "phone" : "1122333",
+        "email" : "test@abc.com",
+        "date_and_timing" : "Tue, 18-Oct-2021 12:30 PM"
+
+    },
+    {
+        "name" : "Jon Doe",
+        "address" : "London",
+        "appointment_doctor" : "Dr Amit Bhapkar",
+        "age" : "35",
+        "phone" : "1122333",
+        "email" : "test@abc.com",
+        "date_and_timing" : "Tue, 18-Oct-2021 12:30 PM"
+
+    },
+    {
+        "name" : "Jon Doe",
+        "address" : "London",
+        "appointment_doctor" : "Dr Amit Bhapkar",
+        "age" : "35",
+        "phone" : "1122333",
+        "email" : "test@abc.com",
+        "date_and_timing" : "Tue, 18-Oct-2021 12:30 PM"
+
+    },
+    {
+        "name" : "Jon Doe",
+        "address" : "London",
+        "appointment_doctor" : "Dr Amit Bhapkar",
+        "age" : "35",
+        "phone" : "1122333",
+        "email" : "test@abc.com",
+        "date_and_timing" : "Tue, 18-Oct-2021 12:30 PM"
+
+    },
+    {
+        "name" : "Jon Doe",
+        "address" : "London",
+        "appointment_doctor" : "Dr Amit Bhapkar",
+        "age" : "35",
+        "phone" : "1122333",
+        "email" : "test@abc.com",
+        "date_and_timing" : "Tue, 18-Oct-2021 12:30 PM"
+
+    },
+    {
+        "name" : "Jon Doe",
+        "address" : "London",
+        "appointment_doctor" : "Dr Amit Bhapkar",
+        "age" : "35",
+        "phone" : "1122333",
+        "email" : "test@abc.com",
+        "date_and_timing" : "Tue, 18-Oct-2021 12:30 PM"
+
+    },
+    {
+        "name" : "Jon Doe",
+        "address" : "London",
+        "appointment_doctor" : "Dr Amit Bhapkar",
+        "age" : "35",
+        "phone" : "1122333",
+        "email" : "test@abc.com",
+        "date_and_timing" : "Tue, 18-Oct-2021 12:30 PM"
+
+    },
+    {
+        "name" : "Lorem Sam",
+        "address" : "London",
+        "appointment_doctor" : "Dr Amit Bhapkar",
+        "age" : "35",
+        "phone" : "1122333",
+        "email" : "test@abc.com",
+        "date_and_timing" : "Tue, 18-Oct-2021 12:30 PM"
+
+    }]
+    return(
+        <div className="list">
+            <ol type="1" start="1">
+            {appointments.map((item) =>
+                <li className ="liClass">
+                    <div className="listDiv1">
+                        <label className="listLabel">{item.name}</label>
+                    </div>
+                    <div className="listDiv1">
+                        <label className="listLabel">{item.address}</label>
+                    </div>
+                    <div className="listDiv1">
+                        <label className="listLabel">{item.age}</label>
+                    </div>
+                    <div className="listDiv1">
+                        <label className="listLabel">{item.appointment_doctor}</label>
+                    </div>
+                    <div className="listDiv1">
+                        <label className="listLabel">{item.date_and_timing}</label>
+                    </div>
+                </li>
+            )}
+            </ol>
+        </div>
+    )
 }
 export default ListView;
