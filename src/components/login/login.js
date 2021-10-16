@@ -1,14 +1,16 @@
 import React from "react";
 import "./login.css";
+import Dashboard from "../dashboard/dashboard";
 class Login extends React.Component {
     constructor(props){
       super(props);
-      this.state = {"userName" : "", "password" : ""};
+      this.state = {"userName" : "", "password" : "", "isLoggedIn": false};
       this.handleSubmit = this.handleSubmit.bind(this);
       this.handleChangeUserName = this.handleChangeUserName.bind(this);
       this.handleChangePassword = this.handleChangePassword.bind(this);
       
     }
+    // This function will load when actual component or UI is rendered. We can set value which we want to display on UI when launch this screen
     componentDidMount(){
     }
     handleChangeUserName(event){
@@ -21,8 +23,9 @@ class Login extends React.Component {
     handleSubmit(event){
       let userName = this.state.userName;
       let password = this.state.password;
-      if(userName === "pravin" && password==="p"){
-          alert("Logged in Successfully")
+      //TODO: Make API call to server to fetch user details to validate. (Encrypt password)
+      if(userName === "" && password===""){
+         this.setState({isLoggedIn : true});
       }else{
           alert("Please enter valid creds");
       }
@@ -30,7 +33,8 @@ class Login extends React.Component {
 
     render() {
       return (
-          <div >
+          <div>
+            {!this.state.isLoggedIn && (
             <div className="login">
                 <h2>Log in</h2>
             <div>
@@ -43,9 +47,14 @@ class Login extends React.Component {
                     Login
                 </button>
                 </form>
-                
             </div>
             </div>
+            )} 
+            {this.state.isLoggedIn && (
+             <div>
+               <Dashboard/>
+              </div>
+            )}
         </div>
       );
     }

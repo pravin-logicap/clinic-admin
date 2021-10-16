@@ -1,0 +1,170 @@
+.topView{
+    height: 100vh;
+    width: 100%;
+}
+.header{
+    background: #2196F3;
+    height: 70px;
+    width: 100%;
+    display: flex;
+}
+.headerImage{
+    float: left;
+    padding: 10px 10px;
+    height: 80%;
+    
+}
+.headerLabel{
+    font-family: "Open Sans", sans-serif;
+    float: left;
+    height: 50%;
+    padding: 20px 0px;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 500;
+}
+.menuView{
+    width: 250px;
+    overflow:auto; 
+    border-right: 4px solid slategray;
+    height: 90vh;
+    padding: 10px 0px;
+    scroll-behavior: smooth;  
+    float: left;
+    
+}
+.menuList{
+    display:inline-block;
+    width: 100%;
+    height: 60px;
+    margin: 10px auto;
+}
+.menuIcon{
+    float: left;
+    left: 0%;
+    padding: 10px 10px;
+    height: 40px;
+    width:15%;
+    
+}
+.menuLabel{
+    padding: 15px 10px;
+    float: left;
+    font-family: "Open Sans", sans-serif;
+    color: #808080;
+    font-size: 20px;
+    font-weight: 500; 
+    text-align: left;
+}
+#dashboardLabel{
+    color: #2196F3;
+}
+.dashboardView{
+    float: left;
+    height: 85%;
+    width: 1268px;
+    display: inline;
+}
+
+.dashboardBlock1 {
+    border-radius: 10px 10px 10px 10px;
+    padding: 10px 20px 20px 20px;
+    width: 90%;
+    max-width: 300px;
+    height: 70px;
+    position: relative;
+    padding-bottom: 80px;
+    box-shadow: 0px 1px 5px rgba(0,0,0,0.3);
+    top: 15px;
+    left: 15px;
+}
+.dashboardBlock2 {
+    border-radius: 10px 10px 10px 10px;
+    padding: 10px 20px 20px 20px;
+    width: 90%;
+    max-width: 300px;
+    height: 70px;
+    position: absolute;
+    padding-bottom: 80px;
+    box-shadow: 0px 1px 5px rgba(0,0,0,0.3);
+    left: 700px;
+    top:85px;
+}
+.dashboardBlock3 {
+    border-radius: 10px 10px 10px 10px;
+    padding: 10px 20px 20px 20px;
+    width: 90%;
+    max-width: 300px;
+    height: 70px;
+    position: relative;
+    padding-bottom: 80px;
+    box-shadow: 0px 1px 5px rgba(0,0,0,0.3);
+    left: 15px;
+    top:50px;
+}
+.dashboardBlock4 {
+    border-radius: 10px 10px 10px 10px;
+    padding: 10px 20px 20px 20px;
+    width: 90%;
+    max-width: 300px;
+    height: 70px;
+    position: absolute;
+    padding-bottom: 80px;
+    box-shadow: 0px 1px 5px rgba(0,0,0,0.3);
+    left: 430px;
+    top:0px;
+}
+.dashboardBlock5 {
+    border-radius: 10px 10px 10px 10px;
+    padding: 10px 20px 20px 20px;
+    width: 90%;
+    max-width: 300px;
+    height: 70px;
+    position: absolute;
+    padding-bottom: 80px;
+    box-shadow: 0px 1px 5px rgba(0,0,0,0.3);
+    left: 830px;
+    top:0px;
+}
+.blockImageDiv{
+    top: 30%;
+    height: 60px;
+    width: 60px;
+    position: absolute;
+}
+.blockCountLabelDiv{
+    float: right;
+    padding: 0;
+    height: 40px;
+    width: 40px;
+    position: absolute;
+    top:0px;
+    right: 10px;
+}
+.blockNameLabelDiv{
+    float: right;
+    width: 150px;
+    right: 10px;
+    position: absolute;
+    bottom: 10px;
+    background: #2196F3;
+    border-radius: 10px 10px 10px 10px;
+}
+.blockLabel{
+    padding: 15px 10px;
+    float: left;
+    font-family: "Open Sans", sans-serif;
+    color: #000;
+    font-size: 20px;
+    font-weight: 500; 
+    text-align: right;
+}
+.blockLabel1{
+    padding: 15px 10px;
+    float: left;
+    font-family: "Open Sans", sans-serif;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 500; 
+    text-align: right;
+}
