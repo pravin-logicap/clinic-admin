@@ -1,6 +1,7 @@
 import React from "react";
 import "./dashboard.css";
 import Doctors from "../doctors/doctors";
+import ListView from "../listView/listView";
 class Dashboard extends React.Component{
     constructor(props){
         super(props);
@@ -12,12 +13,16 @@ class Dashboard extends React.Component{
             "attendedAppointMent" : 0,
             "pendingAppointMent" : 0,
             "isDoctorClicked" : false,
-            "isDashBoardScreen" : true //Set it false before redirecting any other screen
+            "isListClicked" : false,
+            "isDashBoardScreen" : true, //Set it false before redirecting any other screen
+            "listPageName" : "patients"
         }
     }
     componentDidMount(){
         //TODO: Make API call and get details of dashboard
-        this.setState({isDashBoardScreen : true})
+        this.setState({isDashBoardScreen : true});
+        this.setState({isDoctorClicked: false});
+        this.setState({isListClicked:false});
         // Here setState is asynchronous function so when setState is done after callabck we are updating next value
         this.setState({patients : 200, appointments:700, attendedAppointMent:110, doctors:2}, function(){
             let pending = this.state.appointments - this.state.attendedAppointMent;
@@ -31,6 +36,14 @@ class Dashboard extends React.Component{
             case "doctors": 
                 this.setState({isDoctorClicked: true});
                 break;
+            case "appointments":
+                this.setState({isListClicked:true});
+                this.setState({"listPageName" : "Appointments"});
+                break;
+            case "patients":
+                this.setState({isListClicked:true});
+                this.setState({"listPageName" : "Patients"});
+                break;
             default : 
             this.setState({isDashBoardScreen : true});
                 //NOthing to do    
@@ -41,7 +54,10 @@ class Dashboard extends React.Component{
             <div>
                 {this.state.isDoctorClicked && (
                     <Doctors />
-                )} 
+                )}
+                {this.state.isListClicked && (
+                    <ListView page={this.state.listPageName}/>
+                )}  
             {this.state.isDashBoardScreen && (
             <div className="topView">
                 <div className="header">
@@ -57,11 +73,11 @@ class Dashboard extends React.Component{
                         <img src="/icons8-medical-doctor-64.png" alt="" className="menuIcon"></img>
                         <label className="menuLabel"> Doctors</label><br/><br/> 
                     </div>
-                    <div className="menuList">
+                    <div className="menuList" onClick={(e) => this.handleDivClick({ "id" : "appointments"})}>
                         <img src="/icons8-planner-64.png" alt="" className="menuIcon"></img>
                         <label className="menuLabel"> Appointments</label><br/><br/>
                     </div>
-                    <div className="menuList">
+                    <div className="menuList" onClick={(e) => this.handleDivClick({ "id" : "patients"})}>
                         <img src="/icons8-hospital-bed-64.png" alt="" className="menuIcon"></img>
                        <label className="menuLabel"> Patients</label><br/><br/>
                     </div>
