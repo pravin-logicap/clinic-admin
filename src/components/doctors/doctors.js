@@ -1,13 +1,16 @@
 import React from "react";
 import "./doctors.css";
 import Dashboard from "../dashboard/dashboard";
+import Grid from "@material-ui/core/Grid";
+
 class Doctors extends React.Component{
     constructor(props){
         super(props);
         this.handleDivClick = this.handleDivClick.bind(this);
         this.state = {
             "isDashBoardClicked" : false,
-            "isDoctorsScreen" : true //Set it false before redirecting any other screen
+            "isDoctorsScreen" : true, //Set it false before redirecting any other screen
+            "doctorsList" : []
         }
     }
     componentDidMount(){
@@ -57,8 +60,10 @@ class Doctors extends React.Component{
                         <img src="/icons8-pills-64.png" alt="" className="menuIcon"></img>
                         <label className="menuLabel"> Prescription</label><br/><br/>
                     </div>
-                    
                  </div>
+                 <div className="doctorView">
+                   <FetchDoctorsList />
+                </div>
                 </div> )}
                 {this.state.isDashBoardClicked && (
                     <Dashboard />
@@ -68,4 +73,61 @@ class Doctors extends React.Component{
     }
 }
 
+function FetchDoctorsList(){
+    //TODO: MAke API call to fetch doctors list and display on screen
+    let doctorsList = [{
+        "name" : "Dr Amit Bhapkar",
+        "designation" : "doctor",
+        "qualification" : "B.H.M.S",
+        "address" : "Baramati",
+        "contact" : "99988008888",
+        "profileImage" : null
+    },
+    {
+        "name" : "Dr Reshma Amit Bhapkar",
+        "designation" : "doctor",
+        "qualification" : "B.A.M.S",
+        "address" : "Baramati",
+        "contact" : "99988008888",
+        "profileImage" : null
+    },
+    {
+        "name" : "Dr Gorakh Bhapkar",
+        "designation" : "doctor",
+        "qualification" : "B.A.M.S",
+        "address" : "Baramati",
+        "contact" : "99988008888",
+        "profileImage" : null
+    },
+    {
+        "name" : "Dr Bhapkar Madam",
+        "designation" : "doctor",
+        "qualification" : "B.A.M.S",
+        "address" : "Baramati",
+        "contact" : "99988008888",
+        "profileImage" : null
+    }];
+
+    // Now we have list from API call
+    return(
+        <Grid container spacing={2} class="grid">
+        {doctorsList.map((doctor) => 
+
+            <div class="grid-item">
+                <div className="doctorBlock1">
+                        <div className="blockImageDiv">
+                            <img src={doctor.profileImage ? doctor.profileImage : "/icons8-medical-doctor-64.png"} alt="" className="blockImage"></img>
+                        </div>
+                        <div className="blockCountLabelDiv">
+                            <label className="blockLabelDoctors">{doctor.name}</label>
+                        </div>
+                        <div className="blockNameLabelDiv">
+                            <label className="blockLabel1" >{doctor.qualification}</label>
+                        </div>
+                   </div>
+            </div>
+        )}
+    </Grid>
+    );
+}
 export default Doctors;

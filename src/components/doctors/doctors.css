@@ -6,3 +6,44 @@
 #doctorsLabel{
     color: #2196F3;
 }
+.doctorView{
+    float: left;
+    height: 85%;
+    width: 1268px;
+}
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5px; 
+}
+
+.doctorBlock1 {
+    border-radius: 10px 10px 10px 10px;
+    padding: 10px 20px 20px 20px;
+    width: 90%;
+    max-width: 300px;
+    height: 70px;
+    position: relative;
+    padding-bottom: 80px;
+    box-shadow: 0px 1px 5px rgba(0,0,0,0.3);
+    top:20px;
+    left: 20px;
+}
+.blockCountLabelDiv{
+    float: right;
+    padding: 0;
+    height: 60px;
+    width: 200px;
+    position: absolute;
+    top:0px;
+    right: 0px;
+}
+.blockLabelDoctors{
+    float: left;
+    font-family: "Open Sans", sans-serif;
+    color: #000;
+    font-size: 20px;
+    font-weight: 500; 
+    text-align: left;
+    width: 200px;
+}
