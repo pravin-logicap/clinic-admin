@@ -151,6 +151,78 @@ function ListingData(props){
         "email" : "test@abc.com",
         "date_and_timing" : "Tue, 18-Oct-2021 12:30 PM"
 
+    }, {
+        "name" : "Jon Doe",
+        "address" : "London",
+        "appointment_doctor" : "Dr Amit Bhapkar",
+        "age" : "35",
+        "phone" : "1122333",
+        "email" : "test@abc.com",
+        "date_and_timing" : "Tue, 18-Oct-2021 12:30 PM"
+
+    }, {
+        "name" : "Jon Doe",
+        "address" : "London",
+        "appointment_doctor" : "Dr Amit Bhapkar",
+        "age" : "35",
+        "phone" : "1122333",
+        "email" : "test@abc.com",
+        "date_and_timing" : "Tue, 18-Oct-2021 12:30 PM"
+
+    }, {
+        "name" : "Jon Doe",
+        "address" : "London",
+        "appointment_doctor" : "Dr Amit Bhapkar",
+        "age" : "35",
+        "phone" : "1122333",
+        "email" : "test@abc.com",
+        "date_and_timing" : "Tue, 18-Oct-2021 12:30 PM"
+
+    }, {
+        "name" : "Jon Doe",
+        "address" : "London",
+        "appointment_doctor" : "Dr Amit Bhapkar",
+        "age" : "35",
+        "phone" : "1122333",
+        "email" : "test@abc.com",
+        "date_and_timing" : "Tue, 18-Oct-2021 12:30 PM"
+
+    }, {
+        "name" : "Jon Doe",
+        "address" : "London",
+        "appointment_doctor" : "Dr Amit Bhapkar",
+        "age" : "35",
+        "phone" : "1122333",
+        "email" : "test@abc.com",
+        "date_and_timing" : "Tue, 18-Oct-2021 12:30 PM"
+
+    }, {
+        "name" : "Jon Doe",
+        "address" : "London",
+        "appointment_doctor" : "Dr Amit Bhapkar",
+        "age" : "35",
+        "phone" : "1122333",
+        "email" : "test@abc.com",
+        "date_and_timing" : "Tue, 18-Oct-2021 12:30 PM"
+
+    }, {
+        "name" : "Jon Doe",
+        "address" : "London",
+        "appointment_doctor" : "Dr Amit Bhapkar",
+        "age" : "35",
+        "phone" : "1122333",
+        "email" : "test@abc.com",
+        "date_and_timing" : "Tue, 18-Oct-2021 12:30 PM"
+
+    }, {
+        "name" : "Jon Doe",
+        "address" : "London",
+        "appointment_doctor" : "Dr Amit Bhapkar",
+        "age" : "35",
+        "phone" : "1122333",
+        "email" : "test@abc.com",
+        "date_and_timing" : "Tue, 18-Oct-2021 12:30 PM"
+
     },
     {
         "name" : "Jon Doe",
@@ -197,22 +269,22 @@ function ListingData(props){
             <div className="seprator">
             </div>
             <br/>
-                    <div className="listDiv1">
+                    <div className="listDiv1" style={{backgroundColor: "#DCDCDC" }}>
                         <label className="listLabel">Sr No</label>
                     </div>
-                    <div className="listDiv1">
+                    <div className="listDiv1" style={{backgroundColor: "#DCDCDC" }}>
                         <label className="listLabel">Name</label>
                     </div>
-                    <div className="listDiv1">
+                    <div className="listDiv1" style={{backgroundColor: "#DCDCDC" }}>
                         <label className="listLabel">Address</label>
                     </div>
-                    <div className="listDiv1">
+                    <div className="listDiv1" style={{backgroundColor: "#DCDCDC" }}>
                         <label className="listLabel">Age</label>
                     </div>
-                    <div className="listDiv1">
+                    <div className="listDiv1" style={{backgroundColor: "#DCDCDC" }}>
                         <label className="listLabel">Doctor</label>
                     </div>
-                    <div className="listDiv1">
+                    <div className="listDiv1" style={{backgroundColor: "#DCDCDC" }}>
                         <label className="listLabel">Date and Time</label>
                     </div>
                     <br/>
@@ -220,23 +292,23 @@ function ListingData(props){
                     </div>
                <div className="liClass">
             {appointments.map((item) =>
-                <div className ="">
-                    <div className="listDiv1">
+                <div >
+                    <div className="listDiv1" style={{backgroundColor: (count%2===0?"#DCDCDC" : "#C0C0C0")}}>
                         <label className="listLabel">{count+=1}</label>
                     </div>
-                    <div className="listDiv1">
+                    <div className="listDiv1" style={{backgroundColor: (count%2===0?"#C0C0C0" : "#DCDCDC")}}>
                         <label className="listLabel">{item.name}</label>
                     </div>
-                    <div className="listDiv1">
+                    <div className="listDiv1" style={{backgroundColor: (count%2===0?"#C0C0C0" : "#DCDCDC")}}>
                         <label className="listLabel">{item.address}</label>
                     </div>
-                    <div className="listDiv1">
+                    <div className="listDiv1" style={{backgroundColor: (count%2===0?"#C0C0C0" : "#DCDCDC")}}>
                         <label className="listLabel">{item.age}</label>
                     </div>
-                    <div className="listDiv1">
+                    <div className="listDiv1" style={{backgroundColor: (count%2===0?"#C0C0C0" : "#DCDCDC")}}>
                         <label className="listLabel">{item.appointment_doctor}</label>
                     </div>
-                    <div className="listDiv1">
+                    <div className="listDiv1" style={{backgroundColor: (count%2===0?"#C0C0C0" : "#DCDCDC")}}>
                         <label className="listLabel">{item.date_and_timing}</label>
                     </div>
                 </div>
