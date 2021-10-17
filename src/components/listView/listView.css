@@ -1,3 +1,4 @@
+
 #appointmentsLabel{
     color: #2196F3;
 }
@@ -26,14 +27,15 @@
     position: absolute;
     top:150px;
     right: 0%;
-    height: 200px;
-    width: 1268px;
-    scroll-behavior: smooth;
+    height: 80%;
+    width: 80%;
+    left:18%;
     
 }
 .list{
-    display: block;
     position: absolute;
+    width: 100%;
+    
 }
 .olClass{
     width: 50px;
@@ -50,12 +52,23 @@
 }
 .liClass{
     float: left;
-    width: 1000px;
+    width: 100%;
     position: relative;
     height: 420px;
     overflow: scroll;
     scroll-behavior: auto;
-    overflow-x: hidden;
+}
+.liClass1{
+    width: 100%;
+    position: relative;
+    height: 420px;
+    overflow: scroll;
+    overflow-x: scroll;
+}
+.liClass2{
+    display: flex;
+    flex-direction: row;
+    width: 2000px;
 }
 .listDiv1{
     float: left;
@@ -70,7 +83,7 @@
     left: 0px;
     height: 1px;
     background-color: grey;
-    width: 930px;
+    width: 100%;
 }
 .seprator1{
     position: absolute;
@@ -78,7 +91,7 @@
     top:79px;
     height: 1px;
     background-color: grey;
-    width: 930px;
+    width: 100%;
 }
 .listLabel{
     font-family: "Open Sans", sans-serif;

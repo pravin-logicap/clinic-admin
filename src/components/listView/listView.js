@@ -41,7 +41,7 @@ class ListView extends React.Component{
                     <Dashboard />
                 )}
             {this.state.isListScreen && (
-                <div className="topView">
+                <div className="topView1">
                     <div className="header">
                         <img src="/icons8-doctors-bag-48.png" alt="" className="headerImage"></img>
                         <label className="headerLabel" > My Clinic</label>
@@ -98,7 +98,7 @@ function PageTitle(props){
 
 function ListingData(props){
     //TODO: make API call to fetch list of given type
-    let pageType = props.pageName;
+    let pageName = props.pageName;
     console.log("props >> ",props)
     let count = props.count;
     let appointments = [
@@ -264,6 +264,14 @@ function ListingData(props){
         "date_and_timing" : "Tue, 18-Oct-2021 12:30 PM"
 
     }]
+    if(pageName==="Appointments"){
+        return appointmentListing(count, appointments)
+    }else{
+        return patientListing(count, appointments);
+    }
+}
+
+function appointmentListing(count, appointments){
     return(
         <div className="list">
             <div className="seprator">
@@ -298,6 +306,72 @@ function ListingData(props){
                     </div>
                     <div className="listDiv1" style={{backgroundColor: (count%2===0?"#C0C0C0" : "#DCDCDC")}}>
                         <label className="listLabel">{item.name}</label>
+                    </div>
+                    <div className="listDiv1" style={{backgroundColor: (count%2===0?"#C0C0C0" : "#DCDCDC")}}>
+                        <label className="listLabel">{item.address}</label>
+                    </div>
+                    <div className="listDiv1" style={{backgroundColor: (count%2===0?"#C0C0C0" : "#DCDCDC")}}>
+                        <label className="listLabel">{item.age}</label>
+                    </div>
+                    <div className="listDiv1" style={{backgroundColor: (count%2===0?"#C0C0C0" : "#DCDCDC")}}>
+                        <label className="listLabel">{item.appointment_doctor}</label>
+                    </div>
+                    <div className="listDiv1" style={{backgroundColor: (count%2===0?"#C0C0C0" : "#DCDCDC")}}>
+                        <label className="listLabel">{item.date_and_timing}</label>
+                    </div>
+                </div>
+            )}
+            </div>
+        </div>
+    )
+}
+function patientListing(count, appointments){
+    return(
+        <div className="list">
+            <div className="seprator">
+            </div>
+            <br/>
+                    <div className="listDiv1" style={{backgroundColor: "#DCDCDC" }}>
+                        <label className="listLabel">Sr No</label>
+                    </div>
+                    <div className="listDiv1" style={{backgroundColor: "#DCDCDC" }}>
+                        <label className="listLabel">Name</label>
+                    </div>
+                    <div className="listDiv1" style={{backgroundColor: "#DCDCDC" }}>
+                        <label className="listLabel">Phone</label>
+                    </div>
+                    <div className="listDiv1" style={{backgroundColor: "#DCDCDC" }}>
+                        <label className="listLabel">Email</label>
+                    </div>
+                    <div className="listDiv1" style={{backgroundColor: "#DCDCDC" }}>
+                        <label className="listLabel">Address</label>
+                    </div>
+                    <div className="listDiv1" style={{backgroundColor: "#DCDCDC" }}>
+                        <label className="listLabel">Age</label>
+                    </div>
+                    <div className="listDiv1" style={{backgroundColor: "#DCDCDC" }}>
+                        <label className="listLabel">Doctor</label>
+                    </div>
+                    <div className="listDiv1" style={{backgroundColor: "#DCDCDC" }}>
+                        <label className="listLabel">Date and Time</label>
+                    </div>
+                    <br/>
+                    <div className="seprator1">
+                    </div>
+               <div className="liClass1">
+            {appointments.map((item) =>
+                <div className="liClass2">
+                    <div className="listDiv1" style={{backgroundColor: (count%2===0?"#DCDCDC" : "#C0C0C0")}}>
+                        <label className="listLabel">{count+=1}</label>
+                    </div>
+                    <div className="listDiv1" style={{backgroundColor: (count%2===0?"#C0C0C0" : "#DCDCDC")}}>
+                        <label className="listLabel">{item.name}</label>
+                    </div>
+                    <div className="listDiv1" style={{backgroundColor: (count%2===0?"#C0C0C0" : "#DCDCDC")}}>
+                        <label className="listLabel">{item.phone}</label>
+                    </div>
+                    <div className="listDiv1" style={{backgroundColor: (count%2===0?"#C0C0C0" : "#DCDCDC")}}>
+                        <label className="listLabel">{item.email}</label>
                     </div>
                     <div className="listDiv1" style={{backgroundColor: (count%2===0?"#C0C0C0" : "#DCDCDC")}}>
                         <label className="listLabel">{item.address}</label>
