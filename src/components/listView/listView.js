@@ -14,7 +14,8 @@ class ListView extends React.Component{
             "isDashBoardClicked" : false,
             "isListScreen" : true, //Set it false before redirecting any other screen
             "doctorsList" : [],
-            "selectedPageName" : pageName
+            "selectedPageName" : pageName,
+            "count" : 0
         }
     }
     componentDidMount(){
@@ -75,7 +76,7 @@ class ListView extends React.Component{
                     <PageTitle pageName={this.state.selectedPageName} />
                 </div>
                 <div className="listViewOuterView">
-                    <ListingData pageName={this.state.selectedPageName}/>
+                    <ListingData pageName={this.state.selectedPageName} count={0}/>
                 </div>
                 </div>  
             )}
@@ -97,8 +98,9 @@ function PageTitle(props){
 
 function ListingData(props){
     //TODO: make API call to fetch list of given type
-    let pageType = props.pageType;
-
+    let pageType = props.pageName;
+    console.log("props >> ",props)
+    let count = props.count;
     let appointments = [
         {
         "name" : "Lorem ipsum",
@@ -192,9 +194,36 @@ function ListingData(props){
     }]
     return(
         <div className="list">
-            <ol type="1" start="1">
+            <div className="seprator">
+            </div>
+            <br/>
+                    <div className="listDiv1">
+                        <label className="listLabel">Sr No</label>
+                    </div>
+                    <div className="listDiv1">
+                        <label className="listLabel">Name</label>
+                    </div>
+                    <div className="listDiv1">
+                        <label className="listLabel">Address</label>
+                    </div>
+                    <div className="listDiv1">
+                        <label className="listLabel">Age</label>
+                    </div>
+                    <div className="listDiv1">
+                        <label className="listLabel">Doctor</label>
+                    </div>
+                    <div className="listDiv1">
+                        <label className="listLabel">Date and Time</label>
+                    </div>
+                    <br/>
+                    <div className="seprator1">
+                    </div>
+               <div className="liClass">
             {appointments.map((item) =>
-                <li className ="liClass">
+                <div className ="">
+                    <div className="listDiv1">
+                        <label className="listLabel">{count+=1}</label>
+                    </div>
                     <div className="listDiv1">
                         <label className="listLabel">{item.name}</label>
                     </div>
@@ -210,9 +239,9 @@ function ListingData(props){
                     <div className="listDiv1">
                         <label className="listLabel">{item.date_and_timing}</label>
                     </div>
-                </li>
+                </div>
             )}
-            </ol>
+            </div>
         </div>
     )
 }

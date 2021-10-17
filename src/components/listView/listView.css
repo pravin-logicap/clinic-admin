@@ -26,37 +26,66 @@
     position: absolute;
     top:150px;
     right: 0%;
-    height: 75%;
+    height: 200px;
     width: 1268px;
     scroll-behavior: smooth;
     
 }
 .list{
     display: block;
+    position: absolute;
 }
 .olClass{
-    float: left;
     width: 50px;
-    background-color: green;
+    left: 0px;
+    position: absolute;
+}
+.listDiv2{
+    float: left;
     position: relative;
-    left: 10px;
+    left: 40px;
+    width: 200px;
+    height: 60px;
+    
 }
 .liClass{
     float: left;
     width: 1000px;
-    height: 82px;
-    background-color: grey;
+    position: relative;
+    height: 420px;
+    overflow: scroll;
+    scroll-behavior: auto;
+    overflow-x: hidden;
 }
 .listDiv1{
     float: left;
-    width: 200px;
-    height: 80px;
-    background-color: #fff;
+    width: 150px;
+    height: 59px;
     
+}
+
+.seprator{
+    position: absolute;
+    top:10px;
+    left: 0px;
+    height: 1px;
+    background-color: grey;
+    width:1000px;
+}
+.seprator1{
+    position: absolute;
+    top:57px;
+    left: 0px;
+    height: 1px;
+    background-color: grey;
+    width:1000px;
 }
 .listLabel{
     font-family: "Open Sans", sans-serif;
     color: #000;
     font-size: 15px;
     font-weight: 600; 
+    position: relative;
+    top:10px;
+    
 }
