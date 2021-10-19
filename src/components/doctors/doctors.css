@@ -19,14 +19,19 @@
 .doctorBlock1 {
     border-radius: 10px 10px 10px 10px;
     padding: 10px 20px 20px 20px;
-    width: 90%;
-    max-width: 300px;
-    height: 70px;
+    width: 400px;
+    height: 100px;
     position: relative;
     padding-bottom: 80px;
     box-shadow: 0px 1px 5px rgba(0,0,0,0.3);
-    top:20px;
+    top:40px;
     left: 20px;
+    background-color: #fff;
+}
+.blockImage{
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
 }
 .blockCountLabelDiv{
     float: right;

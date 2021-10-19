@@ -1,0 +1,73 @@
+#appointmentsLabel{
+    color: #2196F3;
+}
+#patientLabel{
+    color: #2196F3;
+}
+#AddDetailsTopView{
+    overflow: hidden;
+}
+.addDetailsView{
+    float: left;
+    height: 103vh;
+    width: 1268px;
+    background-color: #DCDCDC;
+}
+#headerLableForAdd{
+    text-align: left;
+}
+.inputFullOuterView{
+    position: absolute;
+    top:150px;
+    left: 300px;
+    width: 1200px;
+    height: 550px;
+    overflow: scroll;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    background-color: #DCDCDC;
+}
+.inputBoxOuterView{
+    position: relative;
+    top:30px;
+    height: 100px;
+    width: 500px;
+    left: 30px;
+}
+.inputLabel{
+    position: absolute;
+    left:10px;
+    text-align: left;
+    width: 400px;
+    height: 30px;
+}
+.userinputbox{
+    position: absolute;
+    bottom: 0px;
+    padding: 15px 10px;
+    bottom: 15px;
+    left: 10px;
+    width: 400px;
+    height: 15px;
+}
+.gender{
+    position: absolute;
+    bottom: 30px;
+    left: 10px;
+    width: 200px;
+    height: 40px;
+    text-align: center;
+}
+#addEditDetail{
+    width: 200px;
+    left: 370px;
+    border-radius: 20px;
+    bottom: 10px;
+}
+#textAreaInput{
+    height: 120px;
+    top: 35px;
+}
+#inputBoxOuterViewTextArea{
+    height: 200px;
+}

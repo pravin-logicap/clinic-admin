@@ -1,6 +1,7 @@
 .topView{
     height: 100vh;
     width: 100%;
+    background-color: #DCDCDC;
 }
 .header{
     background: #2196F3;
@@ -27,10 +28,11 @@
     width: 250px;
     overflow:auto; 
     border-right: 4px solid slategray;
-    height: 90vh;
+    height: 100vh;
     padding: 10px 0px;
     scroll-behavior: smooth;  
     float: left;
+    background-color: #DCDCDC;
     
 }
 .menuList{
@@ -77,6 +79,7 @@
     box-shadow: 0px 1px 5px rgba(0,0,0,0.3);
     top: 15px;
     left: 15px;
+    background-color: #fff;
 }
 .dashboardBlock2 {
     border-radius: 10px 10px 10px 10px;
@@ -89,6 +92,7 @@
     box-shadow: 0px 1px 5px rgba(0,0,0,0.3);
     left: 700px;
     top:85px;
+    background-color: #fff;
 }
 .dashboardBlock3 {
     border-radius: 10px 10px 10px 10px;
@@ -101,6 +105,7 @@
     box-shadow: 0px 1px 5px rgba(0,0,0,0.3);
     left: 15px;
     top:50px;
+    background-color: #fff;
 }
 .dashboardBlock4 {
     border-radius: 10px 10px 10px 10px;
@@ -113,6 +118,7 @@
     box-shadow: 0px 1px 5px rgba(0,0,0,0.3);
     left: 430px;
     top:0px;
+    background-color: #fff;
 }
 .dashboardBlock5 {
     border-radius: 10px 10px 10px 10px;
@@ -125,6 +131,7 @@
     box-shadow: 0px 1px 5px rgba(0,0,0,0.3);
     left: 830px;
     top:0px;
+    background-color: #fff;
 }
 .blockImageDiv{
     top: 10%;

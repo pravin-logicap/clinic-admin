@@ -2,7 +2,7 @@ import React from "react";
 import "./doctors.css";
 import Dashboard from "../dashboard/dashboard";
 import Grid from "@material-ui/core/Grid";
-
+import ListView from "../listView/listView";
 class Doctors extends React.Component{
     constructor(props){
         super(props);
@@ -22,6 +22,14 @@ class Doctors extends React.Component{
             case "dashboard": 
                 this.setState({isDashBoardClicked: true});
                 break;
+        case "appointments":
+            this.setState({isListClicked:true});
+            this.setState({"listPageName" : "Appointments"});
+            break;
+        case "patients":
+            this.setState({isListClicked:true});
+            this.setState({"listPageName" : "Patients"});
+            break;
             default : 
             this.setState({isDoctorsScreen : true}); // By default set true same screen
         }
@@ -29,6 +37,12 @@ class Doctors extends React.Component{
     render(){
         return (
             <div>
+            {this.state.isDashBoardClicked && (
+                <Dashboard />
+            )}
+            {this.state.isListClicked && (
+                <ListView page={this.state.listPageName}/>
+            )} 
             {this.state.isDoctorsScreen && (
                 <div className="topView">
                     <div className="header">
@@ -44,11 +58,11 @@ class Doctors extends React.Component{
                         <img src="/icons8-medical-doctor-64.png" alt="" className="menuIcon"></img>
                         <label className="menuLabel" id="doctorsLabel"> Doctors</label><br/><br/> 
                     </div>
-                    <div className="menuList">
+                    <div className="menuList" onClick={(e) => this.handleDivClick({ "id" : "appointments"})}>
                         <img src="/icons8-planner-64.png" alt="" className="menuIcon"></img>
                         <label className="menuLabel"> Appointments</label><br/><br/>
                     </div>
-                    <div className="menuList">
+                    <div className="menuList" onClick={(e) => this.handleDivClick({ "id" : "patients"})}>
                         <img src="/icons8-hospital-bed-64.png" alt="" className="menuIcon"></img>
                        <label className="menuLabel"> Patients</label><br/><br/>
                     </div>
@@ -65,9 +79,6 @@ class Doctors extends React.Component{
                    <FetchDoctorsList />
                 </div>
                 </div> )}
-                {this.state.isDashBoardClicked && (
-                    <Dashboard />
-                )}
             </div>
         )
     }
@@ -81,7 +92,7 @@ function FetchDoctorsList(){
         "qualification" : "B.H.M.S",
         "address" : "Baramati",
         "contact" : "99988008888",
-        "profileImage" : null
+        "profileImage" : "https://i.ibb.co/7vXsYXQ/amit.png" 
     },
     {
         "name" : "Dr Reshma Amit Bhapkar",
@@ -110,10 +121,10 @@ function FetchDoctorsList(){
 
     // Now we have list from API call
     return(
-        <Grid container spacing={2} class="grid">
+        <Grid container spacing={2} className="grid">
         {doctorsList.map((doctor) => 
 
-            <div class="grid-item">
+            <div className="grid-item">
                 <div className="doctorBlock1">
                         <div className="blockImageDiv">
                             <img src={doctor.profileImage ? doctor.profileImage : "/icons8-medical-doctor-64.png"} alt="" className="blockImage"></img>
