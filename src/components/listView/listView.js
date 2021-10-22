@@ -15,6 +15,7 @@ class ListView extends React.Component{
             "isDashBoardClicked" : false,
             "addAppointmentClicked" : false,
             "addPatientClicked" : false,
+            "readOnlyMode" : false, // open next details screen for Addrdit mode or read only mode. Depend of this flag for next page
             "isDoctorClicked" : false,
             "isListScreen" : true, //Set it false before redirecting any other screen
             "doctorsList" : [],
@@ -28,7 +29,18 @@ class ListView extends React.Component{
     handleListClick(e) {
         console.log("e >> ",e)
         e.preventDefault();
-        alert("List Item clicked "+e.target.id);
+        if(e.target.id  !== "Name"){ // Ignore header line, add all redirect logic heare
+            this.setState({isListScreen : false}); // Disable current screen
+            this.setState({readOnlyMode : true}); // based on this, open next file in read mode 
+            if(this.state.selectedPageName === "Patients"){
+                this.setState({addPatientClicked: true});
+            }else{
+               
+                this.setState({addAppointmentClicked: true});
+            }
+            
+        }
+        
     }
     handleDivClick(props){
         this.setState({isListScreen : false}); // Disable current screen
@@ -64,10 +76,10 @@ class ListView extends React.Component{
                     <Dashboard />
                 )}
             {this.state.addAppointmentClicked && (
-                <AddDetails previousPage={"Appointments"} />
+                <AddDetails previousPage={"Appointments"} mode={this.state.readOnlyMode} />
             )}
             {this.state.addPatientClicked && (
-                <AddDetails previousPage={"Patients"} />
+                <AddDetails previousPage={"Patients"} mode={this.state.readOnlyMode}/>
             )}
             {this.state.isListScreen && (
                 <div className="topView1">
@@ -349,7 +361,7 @@ function appointmentListing(props, count, appointments){
         </div>
     )
 }
-function patientListing(count, appointments){
+function patientListing(props, count, appointments){
     return(
         <div className="list">
             
@@ -357,28 +369,28 @@ function patientListing(count, appointments){
             {appointments.map((item) =>
                 <div className="liClass2">
                     <div className="listDiv1" style={{backgroundColor: (item.name==="Name") ? "#C0C0C0" : (count%2===0?"#DCDCDC" : "#C0C0C0")}}>
-                        <label className="listLabel">{(item.name==="Name")? "Sr No" : count+=1}</label>
+                        <label className="listLabel" id={item.name} onClick={props.listingFunction}>{(item.name==="Name")? "Sr No" : count+=1}</label>
                     </div>
                     <div className="listDiv1" style={{backgroundColor: (count%2===0?"#C0C0C0" : "#DCDCDC")}}>
-                        <label className="listLabel">{item.name}</label>
+                        <label className="listLabel" id={item.name} onClick={props.listingFunction}>{item.name}</label>
                     </div>
                     <div className="listDiv1" style={{backgroundColor: (count%2===0?"#C0C0C0" : "#DCDCDC")}}>
-                        <label className="listLabel">{item.phone}</label>
+                        <label className="listLabel" id={item.name} onClick={props.listingFunction}>{item.phone}</label>
                     </div>
                     <div className="listDiv1" style={{backgroundColor: (count%2===0?"#C0C0C0" : "#DCDCDC")}}>
-                        <label className="listLabel">{item.email}</label>
+                        <label className="listLabel" id={item.name} onClick={props.listingFunction}>{item.email}</label>
                     </div>
                     <div className="listDiv1" style={{backgroundColor: (count%2===0?"#C0C0C0" : "#DCDCDC")}}>
-                        <label className="listLabel">{item.address}</label>
+                        <label className="listLabel" id={item.name} onClick={props.listingFunction}>{item.address}</label>
                     </div>
                     <div className="listDiv1" style={{backgroundColor: (count%2===0?"#C0C0C0" : "#DCDCDC")}}>
-                        <label className="listLabel">{item.age}</label>
+                        <label className="listLabel" id={item.name} onClick={props.listingFunction}>{item.age}</label>
                     </div>
                     <div className="listDiv1" style={{backgroundColor: (count%2===0?"#C0C0C0" : "#DCDCDC")}}>
-                        <label className="listLabel">{item.appointment_doctor}</label>
+                        <label className="listLabel" id={item.name} onClick={props.listingFunction}>{item.appointment_doctor}</label>
                     </div>
                     <div className="listDiv1" style={{backgroundColor: (count%2===0?"#C0C0C0" : "#DCDCDC")}}>
-                        <label className="listLabel">{item.date_and_timing}</label>
+                        <label className="listLabel" id={item.name} onClick={props.listingFunction}>{item.date_and_timing}</label>
                     </div>
                 </div>
             )}
