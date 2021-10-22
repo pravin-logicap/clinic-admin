@@ -28,19 +28,26 @@ class AddDetails extends React.Component{
             "isAddEditScreen" : true, //Set it false before redirecting any other screen
             "headerLabel" : props.mode ? "" : "Add/Edit ",
             "userData" : {
-                "fName" : "",
+                "fName" : (props.listItem!== null && props.listItem !== undefined) ? props.listItem.name : "",
                 "lName" : "",
-                "age" : "",
-                "gender" : "",
-                "address" : "",
-                "phone" : "",
-                "email" : ""
-            }
+                "age" : (props.listItem!== null && props.listItem !== undefined) ? props.listItem.age : "",
+                "gender" :(props.listItem!== null && props.listItem !== undefined) ? props.listItem.gender : "",
+                "address" : (props.listItem!== null && props.listItem !== undefined) ? props.listItem.address : "",
+                "phone" : (props.listItem!== null && props.listItem !== undefined) ? props.listItem.phone : "",
+                "email" : (props.listItem!== null && props.listItem !== undefined) ? props.listItem.email : "",
+                "addmitedDate" : (props.listItem!== null && props.listItem !== undefined) ? props.listItem.addmitedDate : "",
+                "admitReason" : (props.listItem!== null && props.listItem !== undefined) ? props.listItem.admitReason : "",
+                "treatmentGiven" : (props.listItem!== null && props.listItem !== undefined) ? props.listItem.treatmentGiven : "",
+            },
+            "selectedItemFromList" : props.mode ? props.listItem : null
         }
-        console.log("mode >>>>>>>>>> "+props.mode)
+        
     }
     componentDidMount(){
-        
+        // if props.mode is true, means it's read only. read the data from previous page and display on page (in userData)
+        console.log("Details >> ",this.state.selectedItemFromList);
+        if(this.state.selectedItemFromList!== null && this.state.selectedItemFromList !== undefined){
+        }
     }
     handlefNameChange(event){
         this.setState({userData : {fName: event.target.value}});
@@ -147,7 +154,7 @@ class AddDetails extends React.Component{
                             <div className="inputBoxOuterView">
                                 
                             <label className="inputLabel">Gender</label>
-                                <select className="gender" onChange={this.handleGenderChange} value={this.state.userData.gender} readOnly={this.state.openInreadMode}>
+                                <select className="gender" onChange={this.handleGenderChange} value={this.state.userData.gender} disabled={this.state.openInreadMode}>
                                     <option value="male">Male</option>
                                     <option value="female">Female</option>
                                     <option value="transgender">Transgender</option>
@@ -202,7 +209,7 @@ class AddDetails extends React.Component{
                             <div className="inputBoxOuterView">
                                 
                             <label className="inputLabel">Gender</label>
-                                <select className="gender" onChange={this.handleGenderChange} value={this.state.userData.gender} readOnly={this.state.openInreadMode}>
+                                <select className="gender" onChange={this.handleGenderChange} value={this.state.userData.gender} disabled={this.state.openInreadMode}>
                                     <option value="male">Male</option>
                                     <option value="female">Female</option>
                                     <option value="transgender">Transgender</option>
@@ -224,20 +231,20 @@ class AddDetails extends React.Component{
                             </div>
                             <div className="inputBoxOuterView">
                                 <label className="inputLabel">Admitted On</label>
-                                <input type="datetime-local" onChange={this.handleEmailChange} value={this.state.userData.email} placeholder="Date" className="userinputbox" readOnly={this.state.openInreadMode}></input>
+                                <input type="datetime-local" onChange={this.handleEmailChange} value={this.state.userData.addmitedDate} placeholder="Date" className="userinputbox" readOnly={this.state.openInreadMode}></input>
                             </div>
                             <div className="inputBoxOuterView">
                                 <label className="inputLabel">Admitted for/ Reason</label>
-                                <input type="text" onChange={this.handleEmailChange} value={this.state.userData.email} placeholder="Reason" className="userinputbox" readOnly={this.state.openInreadMode}></input>
+                                <input type="text" onChange={this.handleEmailChange} value={this.state.userData.admitReason} placeholder="Reason" className="userinputbox" readOnly={this.state.openInreadMode}></input>
                             </div>
                             <div id="inputBoxOuterViewTextArea" className="inputBoxOuterView">
                                 <label className="inputLabel">Treatment</label>
-                                <textarea id="textAreaInput" onChange={this.handleEmailChange} value={this.state.userData.email} placeholder="Treatment" className="userinputbox" readOnly={this.state.openInreadMode}></textarea>
+                                <textarea id="textAreaInput" onChange={this.handleEmailChange} value={this.state.userData.treatmentGiven} placeholder="Treatment" className="userinputbox" readOnly={this.state.openInreadMode}></textarea>
                             </div>
                             <div className="inputBoxOuterView">
                                 
                             <label className="inputLabel">Status</label>
-                                <select className="gender" onChange={this.handleGenderChange} value={this.state.userData.gender} readOnly={this.state.openInreadMode}>
+                                <select className="gender" onChange={this.handleGenderChange} value={this.state.userData.gender} disabled={this.state.openInreadMode}>
                                     <option value="admitted">admitted</option>
                                     <option value="discharged">discharged</option>
                                     <option value="regular">regular</option>

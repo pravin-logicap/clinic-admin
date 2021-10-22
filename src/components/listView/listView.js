@@ -20,18 +20,21 @@ class ListView extends React.Component{
             "isListScreen" : true, //Set it false before redirecting any other screen
             "doctorsList" : [],
             "selectedPageName" : pageName,
-            "count" : 0
+            "count" : 0,
+            "selectedListItem" : {}
         }
     }
     componentDidMount(){
         
     }
-    handleListClick(e) {
+    handleListClick(e, item) {
         console.log("e >> ",e)
         e.preventDefault();
         if(e.target.id  !== "Name"){ // Ignore header line, add all redirect logic heare
             this.setState({isListScreen : false}); // Disable current screen
             this.setState({readOnlyMode : true}); // based on this, open next file in read mode 
+            
+            this.setState({selectedListItem: item});
             if(this.state.selectedPageName === "Patients"){
                 this.setState({addPatientClicked: true});
             }else{
@@ -76,10 +79,10 @@ class ListView extends React.Component{
                     <Dashboard />
                 )}
             {this.state.addAppointmentClicked && (
-                <AddDetails previousPage={"Appointments"} mode={this.state.readOnlyMode} />
+                <AddDetails previousPage={"Appointments"} mode={this.state.readOnlyMode} listItem={this.state.selectedListItem}/>
             )}
             {this.state.addPatientClicked && (
-                <AddDetails previousPage={"Patients"} mode={this.state.readOnlyMode}/>
+                <AddDetails previousPage={"Patients"} mode={this.state.readOnlyMode} listItem={this.state.selectedListItem}/>
             )}
             {this.state.isListScreen && (
                 <div className="topView1">
@@ -335,25 +338,25 @@ function appointmentListing(props, count, appointments){
             {appointments.map((item) =>
                 <div className="liClass2">
                     <div className="listDiv1" id={item.name} style={{backgroundColor: (item.name==="Name") ? "#C0C0C0" : (count%2===0?"#DCDCDC" : "#C0C0C0")}} >
-                        <label className="listLabel" id={item.name} onClick={props.listingFunction}>{(item.name==="Name")? "Sr No" : count+=1}</label>
+                        <label className="listLabel" id={item.name} onClick={(e) => props.listingFunction(e, item)}>{(item.name==="Name")? "Sr No" : count+=1}</label>
                     </div>
                     <div className="listDiv1" style={{backgroundColor: (count%2===0?"#C0C0C0" : "#DCDCDC")}}>
-                        <label className="listLabel" id={item.name} onClick={props.listingFunction} >{item.name}</label>
+                        <label className="listLabel" id={item.name} onClick={(e) => props.listingFunction(e, item)} >{item.name}</label>
                     </div>
                     <div className="listDiv1" style={{backgroundColor: (count%2===0?"#C0C0C0" : "#DCDCDC")}}>
-                        <label className="listLabel" id={item.name} onClick={props.listingFunction} >{item.phone}</label>
+                        <label className="listLabel" id={item.name} onClick={(e) => props.listingFunction(e, item)} >{item.phone}</label>
                     </div>
                     <div className="listDiv1" style={{backgroundColor: (count%2===0?"#C0C0C0" : "#DCDCDC")}}>
-                        <label className="listLabel" id={item.name} onClick={props.listingFunction}>{item.address}</label>
+                        <label className="listLabel" id={item.name} onClick={(e) => props.listingFunction(e, item)}>{item.address}</label>
                     </div>
                     <div className="listDiv1" style={{backgroundColor: (count%2===0?"#C0C0C0" : "#DCDCDC")}}>
-                        <label className="listLabel" id={item.name} onClick={props.listingFunction}>{item.age}</label>
+                        <label className="listLabel" id={item.name} onClick={(e) => props.listingFunction(e, item)}>{item.age}</label>
                     </div>
                     <div className="listDiv1" style={{backgroundColor: (count%2===0?"#C0C0C0" : "#DCDCDC")}}>
-                        <label className="listLabel" id={item.name} onClick={props.listingFunction}>{item.appointment_doctor}</label>
+                        <label className="listLabel" id={item.name} onClick={(e) => props.listingFunction(e, item)}>{item.appointment_doctor}</label>
                     </div>
                     <div className="listDiv1" style={{backgroundColor: (count%2===0?"#C0C0C0" : "#DCDCDC")}}>
-                        <label className="listLabel" id={item.name} onClick={props.listingFunction}>{item.date_and_timing}</label>
+                        <label className="listLabel" id={item.name} onClick={(e) => props.listingFunction(e, item)}>{item.date_and_timing}</label>
                     </div>
                 </div>
             )}
@@ -369,28 +372,28 @@ function patientListing(props, count, appointments){
             {appointments.map((item) =>
                 <div className="liClass2">
                     <div className="listDiv1" style={{backgroundColor: (item.name==="Name") ? "#C0C0C0" : (count%2===0?"#DCDCDC" : "#C0C0C0")}}>
-                        <label className="listLabel" id={item.name} onClick={props.listingFunction}>{(item.name==="Name")? "Sr No" : count+=1}</label>
+                        <label className="listLabel" id={item.name} onClick={(e) => props.listingFunction(e, item)}>{(item.name==="Name")? "Sr No" : count+=1}</label>
                     </div>
                     <div className="listDiv1" style={{backgroundColor: (count%2===0?"#C0C0C0" : "#DCDCDC")}}>
-                        <label className="listLabel" id={item.name} onClick={props.listingFunction}>{item.name}</label>
+                        <label className="listLabel" id={item.name} onClick={(e) => props.listingFunction(e, item)}>{item.name}</label>
                     </div>
                     <div className="listDiv1" style={{backgroundColor: (count%2===0?"#C0C0C0" : "#DCDCDC")}}>
-                        <label className="listLabel" id={item.name} onClick={props.listingFunction}>{item.phone}</label>
+                        <label className="listLabel" id={item.name} onClick={(e) => props.listingFunction(e, item)}>{item.phone}</label>
                     </div>
                     <div className="listDiv1" style={{backgroundColor: (count%2===0?"#C0C0C0" : "#DCDCDC")}}>
-                        <label className="listLabel" id={item.name} onClick={props.listingFunction}>{item.email}</label>
+                        <label className="listLabel" id={item.name} onClick={(e) => props.listingFunction(e, item)}>{item.email}</label>
                     </div>
                     <div className="listDiv1" style={{backgroundColor: (count%2===0?"#C0C0C0" : "#DCDCDC")}}>
-                        <label className="listLabel" id={item.name} onClick={props.listingFunction}>{item.address}</label>
+                        <label className="listLabel" id={item.name} onClick={(e) => props.listingFunction(e, item)}>{item.address}</label>
                     </div>
                     <div className="listDiv1" style={{backgroundColor: (count%2===0?"#C0C0C0" : "#DCDCDC")}}>
-                        <label className="listLabel" id={item.name} onClick={props.listingFunction}>{item.age}</label>
+                        <label className="listLabel" id={item.name} onClick={(e) => props.listingFunction(e, item)}>{item.age}</label>
                     </div>
                     <div className="listDiv1" style={{backgroundColor: (count%2===0?"#C0C0C0" : "#DCDCDC")}}>
-                        <label className="listLabel" id={item.name} onClick={props.listingFunction}>{item.appointment_doctor}</label>
+                        <label className="listLabel" id={item.name} onClick={(e) => props.listingFunction(e, item)}>{item.appointment_doctor}</label>
                     </div>
                     <div className="listDiv1" style={{backgroundColor: (count%2===0?"#C0C0C0" : "#DCDCDC")}}>
-                        <label className="listLabel" id={item.name} onClick={props.listingFunction}>{item.date_and_timing}</label>
+                        <label className="listLabel" id={item.name} onClick={(e) => props.listingFunction(e, item)}>{item.date_and_timing}</label>
                     </div>
                 </div>
             )}
