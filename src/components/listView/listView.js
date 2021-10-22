@@ -3,6 +3,7 @@ import "./listView.css";
 import Dashboard from "../dashboard/dashboard";
 import Doctors from "../doctors/doctors";
 import AddDetails from "../addDetails/addDetails";
+import InvoiceList from "../invoice/invoiceList";
 class ListView extends React.Component{
     constructor(props){
         super(props);
@@ -17,6 +18,7 @@ class ListView extends React.Component{
             "addPatientClicked" : false,
             "readOnlyMode" : false, // open next details screen for Addrdit mode or read only mode. Depend of this flag for next page
             "isDoctorClicked" : false,
+            "isInvoiceCLicked" : false,
             "isListScreen" : true, //Set it false before redirecting any other screen
             "doctorsList" : [],
             "selectedPageName" : pageName,
@@ -68,6 +70,9 @@ class ListView extends React.Component{
                     this.setState({isListScreen: true});
                     this.setState({selectedPageName : "Patients"})
                     break;
+            case "invoice":
+                     this.setState({isInvoiceCLicked:true});
+                     break;
             default : 
                 this.setState({isListScreen : true}); // By default set true same screen
         }
@@ -107,7 +112,7 @@ class ListView extends React.Component{
                         <img src="/icons8-hospital-bed-64.png" alt="" className="menuIcon"></img>
                        <label className="menuLabel" id={this.state.selectedPageName === "Patients" ? "patientLabel" : ""}>Patients</label><br/><br/>
                     </div>
-                    <div className="menuList">
+                    <div className="menuList" onClick={(e) => this.handleDivClick({ "id" : "invoice"})}>
                         <img src="/icons8-bill-64.png" alt="" className="menuIcon"></img>
                         <label className="menuLabel"> Invoice</label><br/><br/>
                     </div>
@@ -130,6 +135,9 @@ class ListView extends React.Component{
             )}
             {this.state.isDoctorClicked && (
                 <Doctors />
+            )}
+             {this.state.isInvoiceCLicked && (
+                    <InvoiceList />
             )}
         </div>
         )

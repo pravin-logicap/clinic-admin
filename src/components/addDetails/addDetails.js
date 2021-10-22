@@ -237,10 +237,6 @@ class AddDetails extends React.Component{
                                 <label className="inputLabel">Admitted for/ Reason</label>
                                 <input type="text" onChange={this.handleEmailChange} value={this.state.userData.admitReason} placeholder="Reason" className="userinputbox" readOnly={this.state.openInreadMode}></input>
                             </div>
-                            <div id="inputBoxOuterViewTextArea" className="inputBoxOuterView">
-                                <label className="inputLabel">Treatment</label>
-                                <textarea id="textAreaInput" onChange={this.handleEmailChange} value={this.state.userData.treatmentGiven} placeholder="Treatment" className="userinputbox" readOnly={this.state.openInreadMode}></textarea>
-                            </div>
                             <div className="inputBoxOuterView">
                                 
                             <label className="inputLabel">Status</label>
@@ -252,6 +248,11 @@ class AddDetails extends React.Component{
                                 </select>
                                 
                             </div>
+                            <div id="inputBoxOuterViewTextArea" className="inputBoxOuterView">
+                                <label className="inputLabel">Treatment</label>
+                                <textarea id="textAreaInput" onChange={this.handleEmailChange} value={this.state.userData.treatmentGiven} placeholder="Treatment" className="userinputbox" readOnly={this.state.openInreadMode}></textarea>
+                            </div>
+                            
                         </Grid>
                         <div className="inputBoxOuterView" id="submitButtonView" style={{visibility: (this.state.openInreadMode ? "hidden" : "visible")}}>
                             <button type= "submit" value="submit" className="button" id="addEditDetail">

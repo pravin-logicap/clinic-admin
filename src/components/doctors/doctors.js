@@ -3,6 +3,7 @@ import "./doctors.css";
 import Dashboard from "../dashboard/dashboard";
 import Grid from "@material-ui/core/Grid";
 import ListView from "../listView/listView";
+import InvoiceList from "../invoice/invoiceList";
 class Doctors extends React.Component{
     constructor(props){
         super(props);
@@ -10,7 +11,9 @@ class Doctors extends React.Component{
         this.state = {
             "isDashBoardClicked" : false,
             "isDoctorsScreen" : true, //Set it false before redirecting any other screen
-            "doctorsList" : []
+            "doctorsList" : [],
+            "isInvoiceCLicked" : false,
+            "isListClicked" : false
         }
     }
     componentDidMount(){
@@ -30,8 +33,12 @@ class Doctors extends React.Component{
             this.setState({isListClicked:true});
             this.setState({"listPageName" : "Patients"});
             break;
+        case "invoice":
+                this.setState({isInvoiceCLicked:true});
+                break;
             default : 
             this.setState({isDoctorsScreen : true}); // By default set true same screen
+            
         }
     }
     render(){
@@ -43,6 +50,9 @@ class Doctors extends React.Component{
             {this.state.isListClicked && (
                 <ListView page={this.state.listPageName}/>
             )} 
+            {this.state.isInvoiceCLicked && (
+                 <InvoiceList />
+            )}
             {this.state.isDoctorsScreen && (
                 <div className="topView">
                     <div className="header">
@@ -66,7 +76,7 @@ class Doctors extends React.Component{
                         <img src="/icons8-hospital-bed-64.png" alt="" className="menuIcon"></img>
                        <label className="menuLabel"> Patients</label><br/><br/>
                     </div>
-                    <div className="menuList">
+                    <div className="menuList" onClick={(e) => this.handleDivClick({ "id" : "invoice"})}>
                         <img src="/icons8-bill-64.png" alt="" className="menuIcon"></img>
                         <label className="menuLabel"> Invoice</label><br/><br/>
                     </div>
