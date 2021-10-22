@@ -150,9 +150,11 @@ class AddDetails extends React.Component{
                                 <input type="email" onChange={this.handleEmailChange} value={this.state.userData.email} placeholder="Email" className="userinputbox"></input>
                             </div>
                         </Grid>
-                        <button type= "submit" value="submit" className="button" id="addEditDetail">
-                            Submit
-                        </button>
+                        <div className="inputBoxOuterView" id="submitButtonView">
+                            <button type= "submit" value="submit" className="button" id="addEditDetail">
+                                Submit
+                            </button>
+                        </div>
                         </form>
                         </div>
                     </div>

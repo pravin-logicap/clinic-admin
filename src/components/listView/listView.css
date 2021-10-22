@@ -121,11 +121,11 @@
     width: 100%;
 }
 .listLabel{
+    width: auto;
+    width: 100%;
     font-family: "Open Sans", sans-serif;
     color: #000;
     font-size: 15px;
     font-weight: 600; 
-    position: relative;
     top:10px;
-    
 }

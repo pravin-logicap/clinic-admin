@@ -63,7 +63,8 @@
 }
 .dashboardView{
     float: left;
-    height: 85%;
+    height: 102vh;
+    background-color: #DCDCDC;
     width: 1268px;
     display: inline;
 }

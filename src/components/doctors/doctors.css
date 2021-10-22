@@ -7,24 +7,33 @@
 }
 .doctorView{
     float: left;
-    height: 85%;
+    height: 103vh;
     width: 1268px;
+    background-color: #DCDCDC;
+    overflow: scroll;
 }
 .grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 5px; 
+    gap: 30px; 
 }
-
+.grid-item{
+    position: relative;
+    height: 200px;
+    left: 20px;
+    width: 400px;
+    top: 20px;
+    
+}
 .doctorBlock1 {
+    position: relative;
     border-radius: 10px 10px 10px 10px;
     padding: 10px 20px 20px 20px;
-    width: 400px;
+    width: 300px;
     height: 100px;
     position: relative;
     padding-bottom: 80px;
     box-shadow: 0px 1px 5px rgba(0,0,0,0.3);
-    top:40px;
     left: 20px;
     background-color: #fff;
 }
