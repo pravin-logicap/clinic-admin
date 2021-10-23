@@ -42,7 +42,7 @@ class AddEditInvoice extends React.Component{
         // Create new empty object and push into userInvoice with existing object
         let updateExistingObj = this.state.userInvoice;
         let emptyObj = {
-            "id" : updateExistingObj.expense.length+1,
+            "id" : updateExistingObj.expense.length,
             "itemName" : "",
             "description" : "",
             "unitPrice" : "",
@@ -66,7 +66,7 @@ class AddEditInvoice extends React.Component{
             console.log("id is >> ",e.target.id);
             if( i == e.target.id){
                 console.log("Changing value >> ",currentInvoice.expense.length)
-                currentInvoice.expense[i-1][e.target.name] = e.target.value;
+                currentInvoice.expense[i][e.target.name] = e.target.value;
             }
         }
         this.setState({userInvoice: currentInvoice})
