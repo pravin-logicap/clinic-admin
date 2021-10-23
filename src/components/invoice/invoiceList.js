@@ -164,7 +164,7 @@ function ListingData(props){
                 {
                     "id" : 1,
                     "itemName" : "Full Body Checkup",
-                    "description" : "if any",
+                    "description" : "if any and check long text what happen by default where it's increasing or showing ellipsis in text box",
                     "unitPrice" : "150",
                     "qty" : "3",
                     "total" : "450"
@@ -176,6 +176,14 @@ function ListingData(props){
                     "unitPrice" : "200",
                     "qty" : "1",
                     "total" : "200"
+                },
+                {
+                    "id" : "",
+                    "itemName" : "",
+                    "description" : "",
+                    "unitPrice" : "",
+                    "qty" : "",
+                    "total" : ""
                 }
             ]
     

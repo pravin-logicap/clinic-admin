@@ -1,0 +1,86 @@
+
+#invoiceTopView{
+    background-color: #DCDCDC;
+    height: 1200px;
+}
+.invoiceUpperView{
+    top: 150px;
+    position: absolute;
+    left: 250px;
+    height:250px;
+}
+.addRowOuterView{
+    position: absolute;
+    top: 420px;
+    left: 300px;
+    height: 50px;
+    width: 200px;
+}
+#buttonAddRow {
+    width: 100%;
+    height: 100%;
+    padding: 10px 10px;
+    background: #2196F3;
+    color: #fff;
+    display: block;
+    border: none;
+    margin-top: 20px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    max-height: 60px;
+    border: 0px solid rgba(0,0,0,0.1);
+  border-radius: 0 0 2px 2px;
+}
+.inputBoxOuterViewInvoice{
+    position: relative;
+    top:30px;
+    height: 80px;
+    width: 300px;
+    left: 30px;
+}
+.gridInvoice {
+    display: grid;
+    grid-template-columns: 10fr 10fr;
+    gap: 30px; 
+}
+.inputLabelInvoice{
+    height: 40px;
+    width: 300px;
+    top:0px;
+    position: absolute;
+    left: 0px;
+    text-align: left;
+}
+.userinputbox1{
+    height: 30px;
+    width: 280px;
+    left: 0px;
+    position: absolute;
+    bottom: 0px;
+    text-align: left;
+}
+#listViewOuterViewInvoice{
+    position: absolute;
+    top: 500px
+
+}
+.expenseInputBox{
+    width: auto;
+    width: 100%;
+    font-family: "Open Sans", sans-serif;
+    color: #000;
+    font-size: 15px;
+    font-weight: 600; 
+    top:10px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    display: inline-block;
+    height: 30px;
+    text-align: center;
+}
+#inVoiceSaveChangesButton{
+    top: 850px;
+    left:300px
+}

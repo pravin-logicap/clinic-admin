@@ -1,5 +1,6 @@
 import React from "react";
 import "./addEditInvoice.css";
+import Grid from "@material-ui/core/Grid";
 import Dashboard from "../dashboard/dashboard";
 import Doctors from "../doctors/doctors";
 import ListView from "../listView/listView";
@@ -37,6 +38,21 @@ class AddEditInvoice extends React.Component{
     componentDidMount(){
         
     }
+    addRowButtonClick(e){
+        // Create new empty object and push into userInvoice with existing object
+        let updateExistingObj = this.state.userInvoice;
+        let emptyObj = {
+            "id" : "",
+            "itemName" : "",
+            "description" : "",
+            "unitPrice" : "",
+            "qty" : "",
+            "total" : "" 
+        };
+        updateExistingObj.expense.push(emptyObj);
+
+        this.setState({userInvoice: updateExistingObj})
+    }
     handleListClick(e, item) {
         console.log("e >> ",e)
         e.preventDefault();
@@ -44,7 +60,6 @@ class AddEditInvoice extends React.Component{
             // open new view
         }
         // Open invoice details and edit
-        
     }
     handleDivClick(props){
         this.setState({addEditInvoiceClicked : false}); // Disable current screen
@@ -70,6 +85,8 @@ class AddEditInvoice extends React.Component{
                 this.setState({addEditInvoiceClicked : true}); // By default set true same screen
         }
     }
+    
+    
     render(){
         return (
             <div>
@@ -86,7 +103,7 @@ class AddEditInvoice extends React.Component{
                     <InvoiceList />
                 )}
             {this.state.addEditInvoiceClicked && (
-                <div className="topView1">
+                <div className="topView1" id="invoiceTopView">
                     <div className="header">
                         <img src="/icons8-doctors-bag-48.png" alt="" className="headerImage"></img>
                         <label className="headerLabel" > My Clinic</label>
@@ -110,7 +127,7 @@ class AddEditInvoice extends React.Component{
                     </div>
                     <div className="menuList" onClick={(e) => this.handleDivClick({ "id" : "invoice"})}>
                         <img src="/icons8-bill-64.png" alt="" className="menuIcon"></img>
-                        <label className="menuLabel" id="invoiceListLabel"> Invoice</label><br/><br/>
+                        <label className="menuLabel" id="invoiceexpenseInputBox"> Invoice</label><br/><br/>
                     </div>
                     <div className="menuList">
                         <img src="/icons8-pills-64.png" alt="" className="menuIcon"></img>
@@ -122,8 +139,38 @@ class AddEditInvoice extends React.Component{
                     <label className="pageHeaderLabel"> Invoices Details</label>
                  </div>
                 </div>
-                 <div className="listViewOuterView">
+                <div className="invoiceUpperView">
+                <Grid container spacing={3} className="gridInvoice">
+                            <div className="inputBoxOuterViewInvoice">
+                                <label className="inputLabelInvoice">Patient First Name</label>
+                                <input type="text" onChange={this.handlefNameChange}  placeholder="First Name" className="userinputbox1" readOnly={true}></input>
+                            </div>
+                            <div className="inputBoxOuterViewInvoice">
+                                <label className="inputLabelInvoice">Patient Last Name</label>
+                                <input type="text" onChange={this.handlelNameChange}  placeholder="Last Name" className="userinputbox1" readOnly={true}></input>
+                            </div>
+                            <div className="inputBoxOuterViewInvoice">
+                                <label className="inputLabelInvoice">Age</label>
+                                <input type="number" onChange={this.handleAgeChange} placeholder="Age" className="userinputbox1" readOnly={true}></input>
+                            </div>
+                            <div className="inputBoxOuterViewInvoice">
+                                <label className="inputLabelInvoice">Patient First Name</label>
+                                <input type="text" onChange={this.handlefNameChange}  placeholder="First Name" className="userinputbox1" readOnly={true}></input>
+                            </div>
+                </Grid>
+                </div>
+                <div className="addRowOuterView">
+                    <button type= "submit" value="submit" id="buttonAddRow" onClick={(e) =>{this.addRowButtonClick()}}>
+                        Add Row
+                    </button>
+                </div>
+                 <div className="listViewOuterView" id="listViewOuterViewInvoice">
                     <ListingData listingFunction={this.handleListClick} userInvoice={this.state.userInvoice}/>
+                </div>
+                <div className="inputBoxOuterView" id="inVoiceSaveChangesButton" style={{visibility: (this.state.openInreadMode ? "hidden" : "visible")}}>
+                    <button type= "submit" value="submit" className="button" id="addEditDetail">
+                        Save Changes
+                    </button>
                 </div>
                 </div>  
             )}
@@ -142,9 +189,9 @@ function ListingData(props){
                 "id" : "Invoice Number",
                 "itemName" : "Item",
                 "description" : "Description",
-                "unitPrice" : "Unit Cost",
+                "unitPrice" : "₹ Unit Cost",
                 "qty" : "Qty",
-                "total" : "Amount",
+                "total" : "₹ Amount",
                 "status" : "Status",
         };
         console.log("invoiceExpenseList[0].id >>>>>>> ",invoiceExpenseList.expense[0].id)
@@ -164,25 +211,25 @@ function invoiceExpenses(props, count, invoices){
             {invoices.expense.map((item) =>
                 <div className="liClass2">
                     <div className="listDiv1" style={{backgroundColor: (item.id==="Invoice Number") ? "#C0C0C0" : (count%2===0?"#DCDCDC" : "#C0C0C0")}}>
-                        <label className="listLabel" id={item.invoiceNumber} onClick={(e) => props.listingFunction(e, item)}>{(item.id==="Invoice Number")? "Sr No" : count+=1}</label>
+                        <input type="text" className="expenseInputBox" id={item.invoiceNumber} onClick={(e) => props.listingFunction(e, item)} value={(item.id==="Invoice Number")? "Sr No" : count+=1}></input>
                     </div>
                     <div className="listDiv1" style={{backgroundColor: (count%2===0?"#C0C0C0" : "#DCDCDC")}}>
-                        <label className="listLabel" id={item.invoiceNumber} onClick={(e) => props.listingFunction(e, item)}>{invoices.invoiceNumber}</label>
+                        <input type="text" className="expenseInputBox" id={item.invoiceNumber} onClick={(e) => props.listingFunction(e, item)} value={(item.id==="Invoice Number")? "Invoice No." : invoices.invoiceNumber}></input>
                     </div>
                     <div className="listDiv1" style={{backgroundColor: (count%2===0?"#C0C0C0" : "#DCDCDC")}}>
-                        <label className="listLabel" id={item.invoiceNumber} onClick={(e) => props.listingFunction(e, item)}>{item.itemName}</label>
+                        <input type="text" className="expenseInputBox" id={item.invoiceNumber} onClick={(e) => props.listingFunction(e, item)} value={item.itemName}></input>
                     </div>
                     <div className="listDiv1" style={{backgroundColor: (count%2===0?"#C0C0C0" : "#DCDCDC")}}>
-                        <label className="listLabel" id={item.invoiceNumber} onClick={(e) => props.listingFunction(e, item)}>{item.description}</label>
+                        <input type="text" className="expenseInputBox" id={item.invoiceNumber} onClick={(e) => props.listingFunction(e, item)} value={item.description}></input>
                     </div>
                     <div className="listDiv1" style={{backgroundColor: (count%2===0?"#C0C0C0" : "#DCDCDC")}}>
-                        <label className="listLabel" id={item.invoiceNumber} onClick={(e) => props.listingFunction(e, item)}>₹ {item.unitPrice}</label>
+                        <input type="text" className="expenseInputBox" id={item.invoiceNumber} onClick={(e) => props.listingFunction(e, item)} value= {item.unitPrice}></input>
                     </div>
                     <div className="listDiv1" style={{backgroundColor: (count%2===0?"#C0C0C0" : "#DCDCDC")}}>
-                        <label className="listLabel" id={item.invoiceNumber} onClick={(e) => props.listingFunction(e, item)}> {item.qty}</label>
+                        <input type="text" className="expenseInputBox" id={item.invoiceNumber} onClick={(e) => props.listingFunction(e, item)} value= {item.qty}></input>
                     </div>
                     <div className="listDiv1" style={{backgroundColor: (count%2===0?"#C0C0C0" : "#DCDCDC")}}>
-                        <label className="listLabel" id={item.invoiceNumber} onClick={(e) => props.listingFunction(e, item)}>₹ {item.total}</label>
+                        <input type="text" className="expenseInputBox" id={item.invoiceNumber} onClick={(e) => props.listingFunction(e, item)} value={item.total}></input>
                     </div> 
                 </div>
             )}

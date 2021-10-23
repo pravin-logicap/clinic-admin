@@ -128,4 +128,8 @@
     font-size: 15px;
     font-weight: 600; 
     top:10px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    display: inline-block;
 }
