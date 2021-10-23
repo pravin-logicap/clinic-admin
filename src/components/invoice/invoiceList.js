@@ -3,6 +3,7 @@ import "./invoiceList.css";
 import Dashboard from "../dashboard/dashboard";
 import Doctors from "../doctors/doctors";
 import ListView from "../listView/listView";
+import AddEditInvoice from "../addEditInvoice/addEditInvoice";
 class InvoiceList extends React.Component{
     constructor(props){
         super(props);
@@ -17,6 +18,7 @@ class InvoiceList extends React.Component{
             "isDoctorClicked" : false,
             "isListScreen" : false, //Set it false before redirecting any other screen
             "isInvoiceCLicked" : true,
+            "isAddEditInvoiceClicked" : false,
             "doctorsList" : [],
             "count" : 0,
             "selectedListItem" : {},
@@ -29,6 +31,13 @@ class InvoiceList extends React.Component{
     handleListClick(e, item) {
         console.log("e >> ",e)
         e.preventDefault();
+        if(e.target.id  !== "Invoice Number"){
+            // open new view
+            this.setState({isInvoiceCLicked : false}); // Disable current screen
+            this.setState({isAddEditInvoiceClicked: true});
+
+            this.setState({selectedListItem: item}); //Append Item to send to next screen
+        }
         // Open invoice details and edit
         
     }
@@ -49,6 +58,9 @@ class InvoiceList extends React.Component{
                     this.setState({isListScreen: true});
                     this.setState({listPageName : "Patients"})
                     break;
+            case "addEditInvoice": 
+                    this.setState({isAddEditInvoiceClicked: true});
+                    break;
             default : 
                 this.setState({isInvoiceCLicked : true}); // By default set true same screen
         }
@@ -63,7 +75,10 @@ class InvoiceList extends React.Component{
                     <ListView page = {this.state.listPageName}/>
                 )}
                 {this.state.isDoctorClicked && (
-                <Doctors />
+                    <Doctors />
+                )}
+                {this.state.isAddEditInvoiceClicked && (
+                    <AddEditInvoice listItem={this.state.selectedListItem}/>
                 )}
             {this.state.isInvoiceCLicked && (
                 <div className="topView1">
@@ -102,7 +117,7 @@ class InvoiceList extends React.Component{
                 </div>
                 <div className="addEditView" onClick={()=> this.handleDivClick({id:this.state.selectedPageName})}>
                     <img src="/icons8-add-48.png" alt="" className="addEditImageView"></img>
-                    <label className="pageHeaderLabel" id="addEditButton">Add  Invoices</label>
+                    <label className="pageHeaderLabel" id="addEditButton">Create New Invoice</label>
                 </div>
                 <div className="listViewOuterView">
                     <ListingData listingFunction={this.handleListClick} />
@@ -133,7 +148,8 @@ function ListingData(props){
             "dueDatege" : "Due Date",
             "billAmount" : "Bill Amount",
             "paidAmount" : "Paid Amount",
-            "status" : "Status"
+            "status" : "Status",
+            "expense" : []
     
         },
         {
@@ -143,7 +159,25 @@ function ListingData(props){
             "dueDatege" : "Tue, 18-Oct-2021 12:30 PM",
             "billAmount" : "9819",
             "paidAmount" : "5000",
-            "status" : "Partially Paid"
+            "status" : "Partially Paid",
+            "expense" : [
+                {
+                    "id" : 1,
+                    "itemName" : "Full Body Checkup",
+                    "description" : "if any",
+                    "unitPrice" : "150",
+                    "qty" : "3",
+                    "total" : "450"
+                },
+                {
+                    "id" : 2,
+                    "itemName" : "Shuger Test",
+                    "description" : "if any",
+                    "unitPrice" : "200",
+                    "qty" : "1",
+                    "total" : "200"
+                }
+            ]
     
         },
         {
@@ -153,7 +187,25 @@ function ListingData(props){
             "dueDatege" : "Tue, 18-Sept-2021 12:30 PM",
             "billAmount" : "6000",
             "paidAmount" : "6000",
-            "status" : "Paid"
+            "status" : "Paid",
+            "expense" : [
+                {
+                    "id" : 1,
+                    "itemName" : "Full Body Checkup",
+                    "description" : "if any",
+                    "unitPrice" : "150",
+                    "qty" : "3",
+                    "total" : "450"
+                },
+                {
+                    "id" : 2,
+                    "itemName" : "Shuger Test",
+                    "description" : "if any",
+                    "unitPrice" : "200",
+                    "qty" : "1",
+                    "total" : "200"
+                }
+            ]
     
         },
         {
@@ -163,7 +215,25 @@ function ListingData(props){
             "dueDatege" : "Tue, 18-Oct-2021 12:30 PM",
             "billAmount" : "9819",
             "paidAmount" : "5000",
-            "status" : "Partially Paid"
+            "status" : "Partially Paid",
+            "expense" : [
+                {
+                    "id" : 1,
+                    "itemName" : "Full Body Checkup",
+                    "description" : "if any",
+                    "unitPrice" : "150",
+                    "qty" : "3",
+                    "total" : "450"
+                },
+                {
+                    "id" : 2,
+                    "itemName" : "Shuger Test",
+                    "description" : "if any",
+                    "unitPrice" : "200",
+                    "qty" : "1",
+                    "total" : "200"
+                }
+            ]
     
         },
         {
@@ -173,7 +243,25 @@ function ListingData(props){
             "dueDatege" : "Tue, 18-Oct-2021 12:30 PM",
             "billAmount" : "9819",
             "paidAmount" : "5000",
-            "status" : "Partially Paid"
+            "status" : "Partially Paid",
+            "expense" : [
+                {
+                    "id" : 1,
+                    "itemName" : "Full Body Checkup",
+                    "description" : "if any",
+                    "unitPrice" : "150",
+                    "qty" : "3",
+                    "total" : "450"
+                },
+                {
+                    "id" : 2,
+                    "itemName" : "Shuger Test",
+                    "description" : "if any",
+                    "unitPrice" : "200",
+                    "qty" : "1",
+                    "total" : "200"
+                }
+            ]
     
         },
         {
@@ -183,7 +271,25 @@ function ListingData(props){
             "dueDatege" : "Tue, 18-Oct-2021 12:30 PM",
             "billAmount" : "9819",
             "paidAmount" : "5000",
-            "status" : "Partially Paid"
+            "status" : "Partially Paid",
+            "expense" : [
+                {
+                    "id" : 1,
+                    "itemName" : "Full Body Checkup",
+                    "description" : "if any",
+                    "unitPrice" : "150",
+                    "qty" : "3",
+                    "total" : "450"
+                },
+                {
+                    "id" : 2,
+                    "itemName" : "Shuger Test",
+                    "description" : "if any",
+                    "unitPrice" : "200",
+                    "qty" : "1",
+                    "total" : "200"
+                }
+            ]
     
         },
         {
@@ -193,7 +299,25 @@ function ListingData(props){
             "dueDatege" : "Tue, 18-Oct-2021 12:30 PM",
             "billAmount" : "9819",
             "paidAmount" : "5000",
-            "status" : "Partially Paid"
+            "status" : "Partially Paid",
+            "expense" : [
+                {
+                    "id" : 1,
+                    "itemName" : "Full Body Checkup",
+                    "description" : "if any",
+                    "unitPrice" : "150",
+                    "qty" : "3",
+                    "total" : "450"
+                },
+                {
+                    "id" : 2,
+                    "itemName" : "Shuger Test",
+                    "description" : "if any",
+                    "unitPrice" : "200",
+                    "qty" : "1",
+                    "total" : "200"
+                }
+            ]
     
         },
         {
@@ -203,7 +327,25 @@ function ListingData(props){
             "dueDatege" : "Tue, 18-Oct-2021 12:30 PM",
             "billAmount" : "9819",
             "paidAmount" : "5000",
-            "status" : "Partially Paid"
+            "status" : "Partially Paid",
+            "expense" : [
+                {
+                    "id" : 1,
+                    "itemName" : "Full Body Checkup",
+                    "description" : "if any",
+                    "unitPrice" : "150",
+                    "qty" : "3",
+                    "total" : "450"
+                },
+                {
+                    "id" : 2,
+                    "itemName" : "Shuger Test",
+                    "description" : "if any",
+                    "unitPrice" : "200",
+                    "qty" : "1",
+                    "total" : "200"
+                }
+            ]
     
         },
         {
@@ -213,13 +355,31 @@ function ListingData(props){
             "dueDatege" : "Tue, 18-Oct-2021 12:30 PM",
             "billAmount" : "9819",
             "paidAmount" : "5000",
-            "status" : "Partially Paid"
+            "status" : "Partially Paid",
+            "expense" : [
+                {
+                    "id" : 1,
+                    "itemName" : "Full Body Checkup",
+                    "description" : "if any",
+                    "unitPrice" : "150",
+                    "qty" : "3",
+                    "total" : "450"
+                },
+                {
+                    "id" : 2,
+                    "itemName" : "Shuger Test",
+                    "description" : "if any",
+                    "unitPrice" : "200",
+                    "qty" : "1",
+                    "total" : "200"
+                }
+            ]
     
         }
     ]
-        return patientListing(props, 0, invoices);
+        return invoiceListing(props, 0, invoices);
 }
-function patientListing(props, count, invoices){
+function invoiceListing(props, count, invoices){
     return(
         <div className="list">
             
