@@ -136,7 +136,7 @@ class AddEditInvoice extends React.Component{
 
 
 function ListingData(props){
-    let invoiceExpenseList = props.userInvoice.expense;
+    let invoiceExpenseList = props.userInvoice;
     console.log("invoiceExpenseList 1111>> ",invoiceExpenseList)
     let HeaderObj =  {
                 "id" : "Invoice Number",
@@ -147,9 +147,9 @@ function ListingData(props){
                 "total" : "Amount",
                 "status" : "Status",
         };
-        console.log("invoiceExpenseList[0].id >>>>>>> ",invoiceExpenseList[0].id)
-        if(invoiceExpenseList[0].id !== "Invoice Number"){
-            invoiceExpenseList.unshift(HeaderObj); //Append this header object at top
+        console.log("invoiceExpenseList[0].id >>>>>>> ",invoiceExpenseList.expense[0].id)
+        if(invoiceExpenseList.expense[0].id !== "Invoice Number"){
+            invoiceExpenseList.expense.unshift(HeaderObj); //Append this header object at top
         }
         
         //invoiceExpenseList.splice(0,0);
@@ -161,13 +161,13 @@ function invoiceExpenses(props, count, invoices){
         <div className="list">
             
                <div className="liClass1">
-            {invoices.map((item) =>
+            {invoices.expense.map((item) =>
                 <div className="liClass2">
                     <div className="listDiv1" style={{backgroundColor: (item.id==="Invoice Number") ? "#C0C0C0" : (count%2===0?"#DCDCDC" : "#C0C0C0")}}>
                         <label className="listLabel" id={item.invoiceNumber} onClick={(e) => props.listingFunction(e, item)}>{(item.id==="Invoice Number")? "Sr No" : count+=1}</label>
                     </div>
                     <div className="listDiv1" style={{backgroundColor: (count%2===0?"#C0C0C0" : "#DCDCDC")}}>
-                        <label className="listLabel" id={item.invoiceNumber} onClick={(e) => props.listingFunction(e, item)}>{item.id}</label>
+                        <label className="listLabel" id={item.invoiceNumber} onClick={(e) => props.listingFunction(e, item)}>{invoices.invoiceNumber}</label>
                     </div>
                     <div className="listDiv1" style={{backgroundColor: (count%2===0?"#C0C0C0" : "#DCDCDC")}}>
                         <label className="listLabel" id={item.invoiceNumber} onClick={(e) => props.listingFunction(e, item)}>{item.itemName}</label>
