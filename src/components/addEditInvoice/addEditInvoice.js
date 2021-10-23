@@ -223,25 +223,25 @@ function invoiceExpenses(props, count, invoices){
             {invoices.expense.map((item) =>
                 <div className="liClass2">
                     <div className="listDiv1" style={{backgroundColor: (item.id==="Invoice Number") ? "#C0C0C0" : (count%2===0?"#DCDCDC" : "#C0C0C0")}}>
-                        <input type="text" className="expenseInputBox" id={item.invoiceNumber} onClick={(e) => props.listingFunction(e, item)} value={(item.id==="Invoice Number")? "Sr No" : count+=1}></input>
+                        <input type="text" className="expenseInputBox" id={props.userInvoice.expense[count].id} onClick={(e) => props.listingFunction(e, item)} value={(item.id==="Invoice Number")? "Sr No" : count+=1}></input>
                     </div>
                     <div className="listDiv1" style={{backgroundColor: (count%2===0?"#C0C0C0" : "#DCDCDC")}}>
-                        <input type="text" className="expenseInputBox" id={item.invoiceNumber} onClick={(e) => props.listingFunction(e, item)} value={(item.id==="Invoice Number")? "Invoice No." : invoices.invoiceNumber}></input>
+                        <input type="text" className="expenseInputBox" id={props.userInvoice.expense[count].id} onChange={(e) => props.listingFunction(e, item, count)} value={(item.id==="Invoice Number")? "Invoice No." : invoices.invoiceNumber}></input>
                     </div>
                     <div className="listDiv1" style={{backgroundColor: (count%2===0?"#C0C0C0" : "#DCDCDC")}}>
                         <input type="text" className="expenseInputBox" id={props.userInvoice.expense[count].id} onChange={(e) => props.listingFunction(e, item, count)} value={props.userInvoice.expense[count].itemName} name="itemName"></input>
                     </div>
                     <div className="listDiv1" style={{backgroundColor: (count%2===0?"#C0C0C0" : "#DCDCDC")}}>
-                        <input type="text" className="expenseInputBox" id={item.invoiceNumber} onClick={(e) => props.listingFunction(e, item)} value={item.description}></input>
+                        <input type="text" className="expenseInputBox" id={props.userInvoice.expense[count].id} onChange={(e) => props.listingFunction(e, item, count)} value={props.userInvoice.expense[count].description} name="description"></input>
                     </div>
                     <div className="listDiv1" style={{backgroundColor: (count%2===0?"#C0C0C0" : "#DCDCDC")}}>
-                        <input type="text" className="expenseInputBox" id={item.invoiceNumber} onClick={(e) => props.listingFunction(e, item)} value= {item.unitPrice}></input>
+                        <input type="text" className="expenseInputBox" id={props.userInvoice.expense[count].id} onChange={(e) => props.listingFunction(e, item, count)} value={props.userInvoice.expense[count].unitPrice} name="unitPrice"></input>
                     </div>
                     <div className="listDiv1" style={{backgroundColor: (count%2===0?"#C0C0C0" : "#DCDCDC")}}>
-                        <input type="text" className="expenseInputBox" id={item.invoiceNumber} onClick={(e) => props.listingFunction(e, item)} value= {item.qty}></input>
+                        <input type="text" className="expenseInputBox" id={props.userInvoice.expense[count].id} onChange={(e) => props.listingFunction(e, item, count)} value={props.userInvoice.expense[count].qty} name="qty"></input>
                     </div>
                     <div className="listDiv1" style={{backgroundColor: (count%2===0?"#C0C0C0" : "#DCDCDC")}}>
-                        <input type="text" className="expenseInputBox" id={item.invoiceNumber} onClick={(e) => props.listingFunction(e, item)} value={item.total}></input>
+                        <input type="text" className="expenseInputBox" id={props.userInvoice.expense[count].id} onChange={(e) => props.listingFunction(e, item, count)} value={props.userInvoice.expense[count].total} name="total"></input>
                     </div> 
                 </div>
             )}
