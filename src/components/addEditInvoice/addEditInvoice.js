@@ -42,7 +42,7 @@ class AddEditInvoice extends React.Component{
         // Create new empty object and push into userInvoice with existing object
         let updateExistingObj = this.state.userInvoice;
         let emptyObj = {
-            "id" : "",
+            "id" : updateExistingObj.expense.length+1,
             "itemName" : "",
             "description" : "",
             "unitPrice" : "",
@@ -53,12 +53,24 @@ class AddEditInvoice extends React.Component{
 
         this.setState({userInvoice: updateExistingObj})
     }
-    handleListClick(e, item) {
-        console.log("e >> ",e)
+    handleListClick(e, item, itemIndex) {
+        console.log("e >> ",e.target)
+        console.log("index >> ",itemIndex)
         e.preventDefault();
-        if(e.target.id  !== "Invoice Number"){
-            // open new view
+        /*if(e.target.id  !== "Invoice Number"){
+           // this.setState({userInvoice : { expense : {[e.target.id] : {itemName : e.target.value}}} })
+        }*/
+        let currentInvoice = this.state.userInvoice;
+        for(let i = 1; i<= currentInvoice.expense.length; i++){
+            console.log("i is >> ",i);
+            console.log("id is >> ",e.target.id);
+            if( i == e.target.id){
+                console.log("Changing value >> ",currentInvoice.expense.length)
+                currentInvoice.expense[i-1][e.target.name] = e.target.value;
+            }
         }
+        this.setState({userInvoice: currentInvoice})
+
         // Open invoice details and edit
     }
     handleDivClick(props){
@@ -143,19 +155,19 @@ class AddEditInvoice extends React.Component{
                 <Grid container spacing={3} className="gridInvoice">
                             <div className="inputBoxOuterViewInvoice">
                                 <label className="inputLabelInvoice">Patient First Name</label>
-                                <input type="text" onChange={this.handlefNameChange}  placeholder="First Name" className="userinputbox1" readOnly={true}></input>
+                                <input type="text" onChange={this.handlefNameChange}  placeholder="First Name" className="userinputbox1" ></input>
                             </div>
                             <div className="inputBoxOuterViewInvoice">
                                 <label className="inputLabelInvoice">Patient Last Name</label>
-                                <input type="text" onChange={this.handlelNameChange}  placeholder="Last Name" className="userinputbox1" readOnly={true}></input>
+                                <input type="text" onChange={this.handlelNameChange}  placeholder="Last Name" className="userinputbox1"></input>
                             </div>
                             <div className="inputBoxOuterViewInvoice">
                                 <label className="inputLabelInvoice">Age</label>
-                                <input type="number" onChange={this.handleAgeChange} placeholder="Age" className="userinputbox1" readOnly={true}></input>
+                                <input type="number" onChange={this.handleAgeChange} placeholder="Age" className="userinputbox1" ></input>
                             </div>
                             <div className="inputBoxOuterViewInvoice">
                                 <label className="inputLabelInvoice">Patient First Name</label>
-                                <input type="text" onChange={this.handlefNameChange}  placeholder="First Name" className="userinputbox1" readOnly={true}></input>
+                                <input type="text" onChange={this.handlefNameChange}  placeholder="First Name" className="userinputbox1" ></input>
                             </div>
                 </Grid>
                 </div>
@@ -194,7 +206,7 @@ function ListingData(props){
                 "total" : "₹ Amount",
                 "status" : "Status",
         };
-        console.log("invoiceExpenseList[0].id >>>>>>> ",invoiceExpenseList.expense[0].id)
+        console.log("invoiceExpenseList[0].id >>>>>>> ",invoiceExpenseList)
         if(invoiceExpenseList.expense[0].id !== "Invoice Number"){
             invoiceExpenseList.expense.unshift(HeaderObj); //Append this header object at top
         }
@@ -217,7 +229,7 @@ function invoiceExpenses(props, count, invoices){
                         <input type="text" className="expenseInputBox" id={item.invoiceNumber} onClick={(e) => props.listingFunction(e, item)} value={(item.id==="Invoice Number")? "Invoice No." : invoices.invoiceNumber}></input>
                     </div>
                     <div className="listDiv1" style={{backgroundColor: (count%2===0?"#C0C0C0" : "#DCDCDC")}}>
-                        <input type="text" className="expenseInputBox" id={item.invoiceNumber} onClick={(e) => props.listingFunction(e, item)} value={item.itemName}></input>
+                        <input type="text" className="expenseInputBox" id={props.userInvoice.expense[count].id} onChange={(e) => props.listingFunction(e, item, count)} value={props.userInvoice.expense[count].itemName} name="itemName"></input>
                     </div>
                     <div className="listDiv1" style={{backgroundColor: (count%2===0?"#C0C0C0" : "#DCDCDC")}}>
                         <input type="text" className="expenseInputBox" id={item.invoiceNumber} onClick={(e) => props.listingFunction(e, item)} value={item.description}></input>
