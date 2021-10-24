@@ -11,6 +11,10 @@
     width:1200px;
     background-color: whitesmoke;
 }
+#billOuterView{
+    height: 2000px;
+    left: 500px;
+}
 .inputBoxOuterViewInvoice1{
     position: absolute;
     top:30px;

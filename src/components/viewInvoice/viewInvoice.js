@@ -42,16 +42,13 @@ class ViewInvoice extends React.Component{
         
     }
     printDocument() {
-        const input = document.getElementById('billOuterView');
-        html2canvas(input)
-          .then((canvas) => {
+        html2canvas(document.querySelector("#billOuterView")).then(canvas => {
+            //document.body.appendChild(canvas);  // if you want see your screenshot in body.
             const imgData = canvas.toDataURL('image/png');
             const pdf = new jsPDF();
-            pdf.addImage(imgData, 'JPEG', 0, 0);
-            // pdf.output('dataurlnewwindow');
-            pdf.save("download.pdf");
-          })
-        ;
+            pdf.addImage(imgData, 'PNG', 10,10,190,200);
+            pdf.save("download.pdf"); 
+        });
       }
     handleListClick(e, item, itemIndex) {
         console.log("e >> ",e.target)
@@ -152,23 +149,23 @@ class ViewInvoice extends React.Component{
                  </div>
                 </div>
                 <div id="billOuterView">
-                <div className="invoiceUpperView" id="invoicePrintView">
-                            <div className="inputBoxOuterViewInvoice1" >
-                                <label className="inputLabelInvoice" id="printViewInvoice1"><b>{this.state.userInvoice.hospitalInfo.name}</b>, <br/>{this.state.userInvoice.hospitalInfo.address}, <br/> GST No: {this.state.userInvoice.hospitalInfo.GSTNo} </label> 
-                            </div>
-                            <div className="inputBoxOuterViewInvoice1" id="inputBoxOuterViewInvoice2">
-                                <label className="inputLabelInvoice" id="printViewInvoice1"><b>INVOICE: {this.state.userInvoice.invoiceNumber}</b>, <br/>&nbsp;&nbsp; Date: {this.state.userInvoice.createdDate} <br/>&nbsp;&nbsp; Due Date: {this.state.userInvoice.dueDate}</label> 
-                            </div>
-                            <div className="inputBoxOuterViewInvoice1" id="inputBoxOuterViewInvoice3">
-                                <label className="inputLabelInvoice" id="printViewInvoice1"><b>Invoice To:<br/>{this.state.userInvoice.patientInfo.fName} {this.state.userInvoice.patientInfo.lName}<br/></b>{this.state.userInvoice.patientInfo.address} <br/>contact: {this.state.userInvoice.patientInfo.contact} </label> 
-                            </div>
-                            <div className="inputBoxOuterViewInvoice1" id="inputBoxOuterViewInvoice4">
-                                <label className="inputLabelInvoice" id="printViewInvoice1"></label> 
-                            </div>
-                </div>
-                 <div className="listViewOuterView" id="listViewOuterPrintViewInvoice">
-                    <ListingData listingFunction={this.handleListClick} printFunction={this.printDocument} userInvoice={this.state.userInvoice}/>
-                </div>
+                    <div className="invoiceUpperView" id="invoicePrintView">
+                                <div className="inputBoxOuterViewInvoice1" >
+                                    <label className="inputLabelInvoice" id="printViewInvoice1"><b>{this.state.userInvoice.hospitalInfo.name}</b>, <br/>{this.state.userInvoice.hospitalInfo.address}, <br/> GST No: {this.state.userInvoice.hospitalInfo.GSTNo} </label> 
+                                </div>
+                                <div className="inputBoxOuterViewInvoice1" id="inputBoxOuterViewInvoice2">
+                                    <label className="inputLabelInvoice" id="printViewInvoice1"><b>INVOICE: {this.state.userInvoice.invoiceNumber}</b>, <br/>&nbsp;&nbsp; Date: {this.state.userInvoice.createdDate} <br/>&nbsp;&nbsp; Due Date: {this.state.userInvoice.dueDate}</label> 
+                                </div>
+                                <div className="inputBoxOuterViewInvoice1" id="inputBoxOuterViewInvoice3">
+                                    <label className="inputLabelInvoice" id="printViewInvoice1"><b>Invoice To:<br/>{this.state.userInvoice.patientInfo.fName} {this.state.userInvoice.patientInfo.lName}<br/></b>{this.state.userInvoice.patientInfo.address} <br/>contact: {this.state.userInvoice.patientInfo.contact} </label> 
+                                </div>
+                                <div className="inputBoxOuterViewInvoice1" id="inputBoxOuterViewInvoice4">
+                                    <label className="inputLabelInvoice" id="printViewInvoice1"></label> 
+                                </div>
+                    </div>
+                    <div className="listViewOuterView" id="listViewOuterPrintViewInvoice">
+                        <ListingData listingFunction={this.handleListClick} printFunction={this.printDocument} userInvoice={this.state.userInvoice}/>
+                    </div>
                 </div>
                 </div>  
             )}
