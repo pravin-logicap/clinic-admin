@@ -178,7 +178,7 @@ function ListingData(props){
                     "total" : "200"
                 },
                 {
-                    "id" : "",
+                    "id" : 3,
                     "itemName" : "",
                     "description" : "",
                     "unitPrice" : "",

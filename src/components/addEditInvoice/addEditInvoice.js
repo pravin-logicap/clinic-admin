@@ -152,7 +152,7 @@ class AddEditInvoice extends React.Component{
                  </div>
                 </div>
                 <div className="invoiceUpperView">
-                <Grid container spacing={3} className="gridInvoice">
+                <Grid container spacing={2} className="gridInvoice">
                             <div className="inputBoxOuterViewInvoice">
                                 <label className="inputLabelInvoice">Patient First Name</label>
                                 <input type="text" onChange={this.handlefNameChange}  placeholder="First Name" className="userinputbox1" ></input>
