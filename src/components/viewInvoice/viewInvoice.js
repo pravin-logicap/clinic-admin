@@ -1,17 +1,17 @@
 import React from "react";
-import "./addEditInvoice.css";
-import Grid from "@material-ui/core/Grid";
+import "./viewInvoice.css";
 import Dashboard from "../dashboard/dashboard";
 import Doctors from "../doctors/doctors";
 import ListView from "../listView/listView";
 import InvoiceList from "../invoice/invoiceList";
-import ViewInvoice from "../viewInvoice/viewInvoice";
-class AddEditInvoice extends React.Component{
+import html2canvas from 'html2canvas';
+import jsPDF from 'jspdf';
+class ViewInvoice extends React.Component{
     constructor(props){
         super(props);
         this.handleDivClick = this.handleDivClick.bind(this);
         this.handleListClick = this.handleListClick.bind(this);
-        console.log("Edit invoice here1 >>>>>>>>>>>>> ",props.listItem);
+        console.log("Edit invoice here >>>>>>>>>>>>> ",props.listItem);
         this.state = {
             "isDashBoardClicked" : false,
             "addAppointmentClicked" : false,
@@ -22,7 +22,6 @@ class AddEditInvoice extends React.Component{
             "isInvoiceCLicked" : false,
             "doctorsList" : [],
             "addEditInvoiceClicked" : true,
-            "isViewPrintInvoiceClicked" : false,
             "count" : 0,
             "listPageName" : "Patients",
             "userInvoice" : {
@@ -42,25 +41,18 @@ class AddEditInvoice extends React.Component{
     componentDidMount(){
         
     }
-    viewPrintInvoice(e){
-        this.setState({addEditInvoiceClicked : false}); // Disable current screen
-        this.setState({isViewPrintInvoiceClicked : true});
-    }
-    addRowButtonClick(e){
-        // Create new empty object and push into userInvoice with existing object
-        let updateExistingObj = this.state.userInvoice;
-        let emptyObj = {
-            "id" : updateExistingObj.expense.length,
-            "itemName" : "",
-            "description" : "",
-            "unitPrice" : "",
-            "qty" : "",
-            "total" : "" 
-        };
-        updateExistingObj.expense.push(emptyObj);
-
-        this.setState({userInvoice: updateExistingObj})
-    }
+    printDocument() {
+        const input = document.getElementById('billOuterView');
+        html2canvas(input)
+          .then((canvas) => {
+            const imgData = canvas.toDataURL('image/png');
+            const pdf = new jsPDF();
+            pdf.addImage(imgData, 'JPEG', 0, 0);
+            // pdf.output('dataurlnewwindow');
+            pdf.save("download.pdf");
+          })
+        ;
+      }
     handleListClick(e, item, itemIndex) {
         console.log("e >> ",e.target)
         console.log("index >> ",itemIndex)
@@ -122,16 +114,13 @@ class AddEditInvoice extends React.Component{
                 {this.state.isInvoiceCLicked && (
                     <InvoiceList />
                 )}
-                {this.state.isViewPrintInvoiceClicked && (
-                    <ViewInvoice listItem={this.state.userInvoice} />
-                )}
             {this.state.addEditInvoiceClicked && (
                 <div className="topView1" id="invoiceTopView">
                     <div className="header">
                         <img src="/icons8-doctors-bag-48.png" alt="" className="headerImage"></img>
                         <label className="headerLabel" > My Clinic</label>
                     </div>
-                    <div className="menuView">
+                    <div className="menuView" id="invoiceMenuId">
                     <div className="menuList" onClick={(e) => this.handleDivClick({ "id" : "dashboard"})}>
                         <img src="/icons8-dashboard-64.png" alt="" className="menuIcon"></img>
                         <label className="menuLabel"> Dashboard</label><br/><br/>
@@ -161,44 +150,25 @@ class AddEditInvoice extends React.Component{
                  <div className="pageHeader">
                     <label className="pageHeaderLabel"> Invoices Details</label>
                  </div>
-                 <div className="viewprintInvoice">
-                        <button type= "submit" value="submit" id="buttonAddRow" onClick={(e) =>{this.viewPrintInvoice()}}>
-                            View/Print Invoice
-                        </button>
-                    </div>
                 </div>
-                <div className="invoiceUpperView">
-                <Grid container spacing={2} className="gridInvoice">
-                            <div className="inputBoxOuterViewInvoice">
-                                <label className="inputLabelInvoice">Patient First Name</label>
-                                <input type="text" onChange={this.handlefNameChange}  placeholder="First Name" className="userinputbox1" ></input>
+                <div id="billOuterView">
+                <div className="invoiceUpperView" id="invoicePrintView">
+                            <div className="inputBoxOuterViewInvoice1" >
+                                <label className="inputLabelInvoice" id="printViewInvoice1"><b>{this.state.userInvoice.hospitalInfo.name}</b>, <br/>{this.state.userInvoice.hospitalInfo.address}, <br/> GST No: {this.state.userInvoice.hospitalInfo.GSTNo} </label> 
                             </div>
-                            <div className="inputBoxOuterViewInvoice">
-                                <label className="inputLabelInvoice">Patient Last Name</label>
-                                <input type="text" onChange={this.handlelNameChange}  placeholder="Last Name" className="userinputbox1"></input>
+                            <div className="inputBoxOuterViewInvoice1" id="inputBoxOuterViewInvoice2">
+                                <label className="inputLabelInvoice" id="printViewInvoice1"><b>INVOICE: {this.state.userInvoice.invoiceNumber}</b>, <br/>&nbsp;&nbsp; Date: {this.state.userInvoice.createdDate} <br/>&nbsp;&nbsp; Due Date: {this.state.userInvoice.dueDate}</label> 
                             </div>
-                            <div className="inputBoxOuterViewInvoice">
-                                <label className="inputLabelInvoice">Age</label>
-                                <input type="number" onChange={this.handleAgeChange} placeholder="Age" className="userinputbox1" ></input>
+                            <div className="inputBoxOuterViewInvoice1" id="inputBoxOuterViewInvoice3">
+                                <label className="inputLabelInvoice" id="printViewInvoice1"><b>Invoice To:<br/>{this.state.userInvoice.patientInfo.fName} {this.state.userInvoice.patientInfo.lName}<br/></b>{this.state.userInvoice.patientInfo.address} <br/>contact: {this.state.userInvoice.patientInfo.contact} </label> 
                             </div>
-                            <div className="inputBoxOuterViewInvoice">
-                                <label className="inputLabelInvoice">Patient First Name</label>
-                                <input type="text" onChange={this.handlefNameChange}  placeholder="First Name" className="userinputbox1" ></input>
+                            <div className="inputBoxOuterViewInvoice1" id="inputBoxOuterViewInvoice4">
+                                <label className="inputLabelInvoice" id="printViewInvoice1"></label> 
                             </div>
-                </Grid>
                 </div>
-                <div className="addRowOuterView">
-                    <button type= "submit" value="submit" id="buttonAddRow" onClick={(e) =>{this.addRowButtonClick()}}>
-                        Add Row
-                    </button>
+                 <div className="listViewOuterView" id="listViewOuterPrintViewInvoice">
+                    <ListingData listingFunction={this.handleListClick} printFunction={this.printDocument} userInvoice={this.state.userInvoice}/>
                 </div>
-                 <div className="listViewOuterView" id="listViewOuterViewInvoice">
-                    <ListingData listingFunction={this.handleListClick} userInvoice={this.state.userInvoice}/>
-                </div>
-                <div className="inputBoxOuterView" id="inVoiceSaveChangesButton" style={{visibility: (this.state.openInreadMode ? "hidden" : "visible")}}>
-                    <button type= "submit" value="submit" className="button" id="addEditDetail">
-                        Save Changes
-                    </button>
                 </div>
                 </div>  
             )}
@@ -235,7 +205,7 @@ function invoiceExpenses(props, count, invoices){
     return(
         <div className="list">
             
-               <div className="liClass1">
+               <div className="liClass111" id="listClassId" >
             {invoices.expense.map((item) =>
                 <div className="liClass2">
                     <div className="listDiv1" style={{backgroundColor: (item.id==="Invoice Number") ? "#C0C0C0" : (count%2===0?"#DCDCDC" : "#C0C0C0")}}>
@@ -261,8 +231,28 @@ function invoiceExpenses(props, count, invoices){
                     </div> 
                 </div>
             )}
+            <div className="bottomPrintView">
+                <div className="listDiv1" id="totalDiv" >
+                    <label className="inputLabelInvoice" id="printViewInvoice2"><b>SubTotal:</b> </label>
+                    <label className="inputLabelInvoice" id="printViewInvoice22"><b>₹ {props.userInvoice.billAmount}</b> </label>
+
+                    <label className="inputLabelInvoice" id="printViewInvoice3"><b>Tax:</b> </label> 
+                    <label className="inputLabelInvoice" id="printViewInvoice33"><b>0%</b> </label> 
+
+                    <label className="inputLabelInvoice" id="printViewInvoice4"><b>Paid: </b> </label> 
+                    <label className="inputLabelInvoice" id="printViewInvoice44"><b>₹ {props.userInvoice.paidAmount} </b> </label> 
+
+                    <label className="inputLabelInvoice" id="printViewInvoice5"><b>Pending: </b> </label>
+                    <label className="inputLabelInvoice" id="printViewInvoice55"><b>₹ {props.userInvoice.billAmount - props.userInvoice.paidAmount}</b> </label>
+                </div>
+                <div className="inputBoxOuterView" id="inVoicePrintButton" >
+                        <button type= "submit" value="submit" className="button" id="addEditDetail" onClick={(e) => props.printFunction()}>
+                            Print Invoice
+                        </button>
+                </div>
+             </div>
             </div>
         </div>
     )
 }
-export default AddEditInvoice;
+export default ViewInvoice;

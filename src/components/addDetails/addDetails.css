@@ -16,6 +16,13 @@
 #headerLableForAdd{
     text-align: left;
 }
+.editRecordView{
+    left: 1200px;
+    position: absolute;
+    height: 40px;
+    width: 100px;
+    top:90px;
+}
 .inputFullOuterView{
     position: absolute;
     top:150px;

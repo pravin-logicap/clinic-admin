@@ -145,7 +145,7 @@ function ListingData(props){
             "invoiceNumber" : "Invoice Number",
             "patientName" : "Patient Name",
             "createdDate" : "Created Date",
-            "dueDatege" : "Due Date",
+            "dueDate" : "Due Date",
             "billAmount" : "Bill Amount",
             "paidAmount" : "Paid Amount",
             "status" : "Status",
@@ -156,10 +156,22 @@ function ListingData(props){
             "invoiceNumber" : "#123",
             "patientName" : "Ram Gopal",
             "createdDate" : "Tue, 18-Oct-2021 12:30 PM",
-            "dueDatege" : "Tue, 18-Oct-2021 12:30 PM",
+            "dueDate" : "Tue, 18-Oct-2021 12:30 PM",
             "billAmount" : "9819",
             "paidAmount" : "5000",
             "status" : "Partially Paid",
+            "hospitalInfo" : {
+                "name" : "Swayambhu Hospital",
+                "doctorName" : "Dr Amit Bhapkar",
+                "GSTNo" : "#45563",
+                "address" : "Near Maharshtra Bank, Baramati MIDC"
+            },
+            "patientInfo" : {
+                "fName" : "Ramesh",
+                "lName" : "Gupta",
+                "address" : "A/p: katewadi, Tal: Baramati Dist: Pune",
+                "contact" : 987666677
+            },
             "expense" : [
                 {
                     "id" : 1,
@@ -178,12 +190,100 @@ function ListingData(props){
                     "total" : "200"
                 },
                 {
-                    "id" : 3,
-                    "itemName" : "",
-                    "description" : "",
-                    "unitPrice" : "",
-                    "qty" : "",
-                    "total" : ""
+                    "id" : 1,
+                    "itemName" : "Full Body Checkup",
+                    "description" : "if any and check long text what happen by default where it's increasing or showing ellipsis in text box",
+                    "unitPrice" : "150",
+                    "qty" : "3",
+                    "total" : "450"
+                },
+                {
+                    "id" : 2,
+                    "itemName" : "Shuger Test",
+                    "description" : "if any",
+                    "unitPrice" : "200",
+                    "qty" : "1",
+                    "total" : "200"
+                },
+                {
+                    "id" : 1,
+                    "itemName" : "Full Body Checkup",
+                    "description" : "if any and check long text what happen by default where it's increasing or showing ellipsis in text box",
+                    "unitPrice" : "150",
+                    "qty" : "3",
+                    "total" : "450"
+                },
+                {
+                    "id" : 2,
+                    "itemName" : "Shuger Test",
+                    "description" : "if any",
+                    "unitPrice" : "200",
+                    "qty" : "1",
+                    "total" : "200"
+                },
+                {
+                    "id" : 1,
+                    "itemName" : "Full Body Checkup",
+                    "description" : "if any and check long text what happen by default where it's increasing or showing ellipsis in text box",
+                    "unitPrice" : "150",
+                    "qty" : "3",
+                    "total" : "450"
+                },
+                {
+                    "id" : 2,
+                    "itemName" : "Shuger Test",
+                    "description" : "if any",
+                    "unitPrice" : "200",
+                    "qty" : "1",
+                    "total" : "200"
+                },
+                {
+                    "id" : 1,
+                    "itemName" : "Full Body Checkup",
+                    "description" : "if any and check long text what happen by default where it's increasing or showing ellipsis in text box",
+                    "unitPrice" : "150",
+                    "qty" : "3",
+                    "total" : "450"
+                },
+                {
+                    "id" : 2,
+                    "itemName" : "Shuger Test",
+                    "description" : "if any",
+                    "unitPrice" : "200",
+                    "qty" : "1",
+                    "total" : "200"
+                },
+                {
+                    "id" : 1,
+                    "itemName" : "Full Body Checkup",
+                    "description" : "if any and check long text what happen by default where it's increasing or showing ellipsis in text box",
+                    "unitPrice" : "150",
+                    "qty" : "3",
+                    "total" : "450"
+                },
+                {
+                    "id" : 2,
+                    "itemName" : "Shuger Test",
+                    "description" : "if any",
+                    "unitPrice" : "200",
+                    "qty" : "1",
+                    "total" : "200"
+                },
+                {
+                    "id" : 1,
+                    "itemName" : "Full Body Checkup",
+                    "description" : "if any and check long text what happen by default where it's increasing or showing ellipsis in text box",
+                    "unitPrice" : "150",
+                    "qty" : "3",
+                    "total" : "450"
+                },
+                {
+                    "id" : 2,
+                    "itemName" : "Shuger Test",
+                    "description" : "if any",
+                    "unitPrice" : "200",
+                    "qty" : "1",
+                    "total" : "200"
                 }
             ]
     
@@ -192,10 +292,23 @@ function ListingData(props){
             "invoiceNumber" : "#124",
             "patientName" : "Suman Gupta",
             "createdDate" : "Tue, 16-Sept-2021 12:30 PM",
-            "dueDatege" : "Tue, 18-Sept-2021 12:30 PM",
+            "dueDate" : "Tue, 18-Sept-2021 12:30 PM",
             "billAmount" : "6000",
             "paidAmount" : "6000",
             "status" : "Paid",
+            
+            "hospitalInfo" : {
+                "name" : "Swayambhu Hospital",
+                "doctorName" : "Dr Amit Bhapkar",
+                "GSTNo" : "#45563",
+                "address" : "Near Maharshtra Bank, Baramati MIDC"
+            },
+            "patientInfo" : {
+                "fName" : "Ramesh",
+                "lName" : "Gupta",
+                "address" : "A/p: katewadi, Tal: Baramati Dist: Pune",
+                "contact" : 987666677
+            },
             "expense" : [
                 {
                     "id" : 1,
@@ -220,7 +333,7 @@ function ListingData(props){
             "invoiceNumber" : "#125",
             "patientName" : "Ram Gopal",
             "createdDate" : "Tue, 18-Oct-2021 12:30 PM",
-            "dueDatege" : "Tue, 18-Oct-2021 12:30 PM",
+            "dueDate" : "Tue, 18-Oct-2021 12:30 PM",
             "billAmount" : "9819",
             "paidAmount" : "5000",
             "status" : "Partially Paid",
@@ -248,7 +361,7 @@ function ListingData(props){
             "invoiceNumber" : "#123",
             "patientName" : "Ram Gopal",
             "createdDate" : "Tue, 18-Oct-2021 12:30 PM",
-            "dueDatege" : "Tue, 18-Oct-2021 12:30 PM",
+            "dueDate" : "Tue, 18-Oct-2021 12:30 PM",
             "billAmount" : "9819",
             "paidAmount" : "5000",
             "status" : "Partially Paid",
@@ -276,7 +389,7 @@ function ListingData(props){
             "invoiceNumber" : "#123",
             "patientName" : "Ram Gopal",
             "createdDate" : "Tue, 18-Oct-2021 12:30 PM",
-            "dueDatege" : "Tue, 18-Oct-2021 12:30 PM",
+            "dueDate" : "Tue, 18-Oct-2021 12:30 PM",
             "billAmount" : "9819",
             "paidAmount" : "5000",
             "status" : "Partially Paid",
@@ -304,7 +417,7 @@ function ListingData(props){
             "invoiceNumber" : "#123",
             "patientName" : "Ram Gopal",
             "createdDate" : "Tue, 18-Oct-2021 12:30 PM",
-            "dueDatege" : "Tue, 18-Oct-2021 12:30 PM",
+            "dueDate" : "Tue, 18-Oct-2021 12:30 PM",
             "billAmount" : "9819",
             "paidAmount" : "5000",
             "status" : "Partially Paid",
@@ -332,7 +445,7 @@ function ListingData(props){
             "invoiceNumber" : "#123",
             "patientName" : "Ram Gopal",
             "createdDate" : "Tue, 18-Oct-2021 12:30 PM",
-            "dueDatege" : "Tue, 18-Oct-2021 12:30 PM",
+            "dueDate" : "Tue, 18-Oct-2021 12:30 PM",
             "billAmount" : "9819",
             "paidAmount" : "5000",
             "status" : "Partially Paid",
@@ -360,7 +473,7 @@ function ListingData(props){
             "invoiceNumber" : "#123",
             "patientName" : "Ram Gopal",
             "createdDate" : "Tue, 18-Oct-2021 12:30 PM",
-            "dueDatege" : "Tue, 18-Oct-2021 12:30 PM",
+            "dueDate" : "Tue, 18-Oct-2021 12:30 PM",
             "billAmount" : "9819",
             "paidAmount" : "5000",
             "status" : "Partially Paid",
@@ -407,7 +520,7 @@ function invoiceListing(props, count, invoices){
                         <label className="listLabel" id={item.invoiceNumber} onClick={(e) => props.listingFunction(e, item)}>{item.createdDate}</label>
                     </div>
                     <div className="listDiv1" style={{backgroundColor: (count%2===0?"#C0C0C0" : "#DCDCDC")}}>
-                        <label className="listLabel" id={item.invoiceNumber} onClick={(e) => props.listingFunction(e, item)}>{item.dueDatege}</label>
+                        <label className="listLabel" id={item.invoiceNumber} onClick={(e) => props.listingFunction(e, item)}>{item.dueDate}</label>
                     </div>
                     <div className="listDiv1" style={{backgroundColor: (count%2===0?"#C0C0C0" : "#DCDCDC")}}>
                         <label className="listLabel" id={item.invoiceNumber} onClick={(e) => props.listingFunction(e, item)}>₹ {item.billAmount}</label>

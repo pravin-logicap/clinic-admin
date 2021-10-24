@@ -49,6 +49,10 @@ class AddDetails extends React.Component{
         if(this.state.selectedItemFromList!== null && this.state.selectedItemFromList !== undefined){
         }
     }
+    editRowButtonClick(e){
+        // Open form in edit mode OR allow edit (Disable readoly property)
+        this.setState({openInreadMode: false})
+    }
     handlefNameChange(event){
         this.setState({userData : {fName: event.target.value}});
     }
@@ -136,6 +140,11 @@ class AddDetails extends React.Component{
                     <div className="pageHeader">
                         <label className="pageHeaderLabel" id="headerLableForAdd">{this.state.headerLabel} Appointments</label>
                     </div>
+                    <div className="editRecordView" style={{visibility: (this.state.openInreadMode ? "visible" : "hidden")}}>
+                        <button type= "submit" value="submit" id="buttonAddRow" onClick={(e) =>{this.editRowButtonClick()}}>
+                            Edit Record
+                        </button>
+                    </div>
                         <div className="inputFullOuterView">
                         <form onSubmit={this.handleSubmit}>
                         <Grid container spacing={2} className="grid">
@@ -190,6 +199,11 @@ class AddDetails extends React.Component{
                     <div>
                     <div className="pageHeader">
                         <label className="pageHeaderLabel" id="headerLableForAdd"> {this.state.headerLabel} Patients</label>
+                    </div>
+                    <div className="editRecordView" style={{visibility: (this.state.openInreadMode ? "visible" : "hidden")}}>
+                        <button type= "submit" value="submit" id="buttonAddRow" onClick={(e) =>{this.editRowButtonClick()}}>
+                            Edit Record
+                        </button>
                     </div>
                         <div className="inputFullOuterView">
                         <form onSubmit={this.handleSubmit}>

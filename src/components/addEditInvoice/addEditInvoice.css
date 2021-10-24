@@ -3,6 +3,13 @@
     background-color: #DCDCDC;
     height: 1200px;
 }
+.viewprintInvoice{
+    left: 1200px;
+    position: absolute;
+    height: 40px;
+    width: 200px;
+    top:90px;
+}
 .invoiceUpperView{
     top: 150px;
     position: absolute;
