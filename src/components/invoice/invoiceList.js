@@ -70,6 +70,18 @@ class InvoiceList extends React.Component{
                         "billAmount" : "",
                         "paidAmount" : "",
                         "status" : "",
+                        "hospitalInfo" : {  // get this info from API
+                            "name" : "Swayambhu Hospital",
+                            "doctorName" : "Dr Amit Bhapkar",
+                            "GSTNo" : "#45563",
+                            "address" : "Near Maharshtra Bank, Baramati MIDC"
+                        },
+                        "patientInfo" : { // Get thi info from next screen
+                            "fName" : "",
+                            "lName" : "",
+                            "address" : "",
+                            "contact" : ""
+                        },
                         "expense" : []
                 
                     }
