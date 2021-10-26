@@ -1,4 +1,10 @@
 
+#invoiceTopView1{
+    width: 100%;
+    background-color: #DCDCDC;
+    height:auto; overflow:auto
+}
+
 #invoiceTopView{
     background-color: #DCDCDC;
     height: 1200px;

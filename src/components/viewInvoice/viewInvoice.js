@@ -113,7 +113,7 @@ class ViewInvoice extends React.Component{
                     <InvoiceList />
                 )}
             {this.state.addEditInvoiceClicked && (
-                <div className="topView1" id="invoiceTopView">
+                <div className="topView" id="invoiceTopView1">
                     <div className="header">
                         <img src="/icons8-doctors-bag-48.png" alt="" className="headerImage"></img>
                         <label className="headerLabel" > My Clinic</label>
