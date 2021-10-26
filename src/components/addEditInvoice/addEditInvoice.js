@@ -6,6 +6,7 @@ import Doctors from "../doctors/doctors";
 import ListView from "../listView/listView";
 import InvoiceList from "../invoice/invoiceList";
 import ViewInvoice from "../viewInvoice/viewInvoice";
+import has from 'lodash/has';
 class AddEditInvoice extends React.Component{
     constructor(props){
         super(props);
@@ -223,7 +224,7 @@ function ListingData(props){
                 "status" : "Status",
         };
         console.log("invoiceExpenseList[0].id >>>>>>> ",invoiceExpenseList)
-        if(invoiceExpenseList.expense[0].id !== "Invoice Number"){
+        if((has(invoiceExpenseList,"expense") && invoiceExpenseList.expense.length===0) || invoiceExpenseList.expense[0].id !== "Invoice Number"){
             invoiceExpenseList.expense.unshift(HeaderObj); //Append this header object at top
         }
         

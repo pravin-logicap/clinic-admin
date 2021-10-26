@@ -61,6 +61,21 @@ class InvoiceList extends React.Component{
             case "addEditInvoice": 
                     this.setState({isAddEditInvoiceClicked: true});
                     break;
+            case "createNewInvoice" :
+                    let createNew = { 
+                        "invoiceNumber" : "",
+                        "patientName" : "",
+                        "createdDate" : "",
+                        "dueDate" : "",
+                        "billAmount" : "",
+                        "paidAmount" : "",
+                        "status" : "",
+                        "expense" : []
+                
+                    }
+                    this.setState({selectedListItem : createNew});
+                    this.setState({isAddEditInvoiceClicked: true});
+                    break;
             default : 
                 this.setState({isInvoiceCLicked : true}); // By default set true same screen
         }
@@ -115,7 +130,7 @@ class InvoiceList extends React.Component{
                  <div className="pageTitle">
                     <PageTitle pageName={this.state.selectedPageName} />
                 </div>
-                <div className="addEditView" onClick={()=> this.handleDivClick({id:this.state.selectedPageName})}>
+                <div className="addEditView" onClick={()=> this.handleDivClick({id:"createNewInvoice"})}>
                     <img src="/icons8-add-48.png" alt="" className="addEditImageView"></img>
                     <label className="pageHeaderLabel" id="addEditButton">Create New Invoice</label>
                 </div>
