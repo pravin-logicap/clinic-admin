@@ -2,20 +2,29 @@
     height: 100vh;
     width: 100%;
 }
+.topView{
+    height:auto; overflow:auto;
+    width: 100%;
+    background-color: #DCDCDC;
+    position: relative;
+}
 #doctorsLabel{
     color: #2196F3;
 }
 .doctorView{
-    float: left;
-    height: 103vh;
-    width: 1268px;
+    float: top;
+    left: 280px;
+    height: 102vh;
     background-color: #DCDCDC;
-    overflow: scroll;
+    width: 1268px;
+    position: relative;
 }
 .grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 30px; 
+    position: absolute;
+    background-color: #DCDCDC;
+    top: 50px
 }
 .grid-item{
     position: relative;
